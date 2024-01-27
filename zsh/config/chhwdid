@@ -18,7 +18,7 @@
 rm -f /var/lib/dbus/machine-id
 dbus-uuidgen > /var/lib/dbus/machine-id
 cp -p /var/lib/dbus/machine-id /etc/machine-id
-chmod 0444 /etc/machione-id
+chmod 0444 /etc/machine-id
 
 # SCRIPT EOF
 
