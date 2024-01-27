@@ -11,7 +11,7 @@
 # be very enganging.
 #
 # So this is a little notifier, using the Windows notification service,
-# reminding us do do a little break.
+# reminding us to do a little break.
 #
 # Have a lot of Fun ...
 #
@@ -24,7 +24,7 @@
 #  % python notify &
 #
 ################################################################################
-# No Shebang line under Windows. !!!
+# No Shebang line under Windows !!!
 
 import time
 from plyer import notification
@@ -38,4 +38,3 @@ if __name__ == '__main__':
       )
       time.sleep(3600 * 3) # seconds
 
-# EOF
