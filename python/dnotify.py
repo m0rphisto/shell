@@ -1,5 +1,6 @@
+#!/usr/bin/python3
 ################################################################################
-# $Id: dnotify.py 1 2023-12-18 08:26:15 +0100 .m0rph $
+# $Id: dnotify.py v1.0 2024-01-27 14:21:40 +0100 .m0rph $
 ################################################################################
 # Description:
 # ------------
@@ -18,11 +19,17 @@
 # .m0rph
 # -----------------------------------------------------------------------------
 #
-# Dependencies: pip install plyer
+# Dependencies:
+#  system-wide: apt install python3-plyer (Debian based)
+#   user-local: pip install plyer
+#
 # Note: Run in background 
 #
-#  % python notify &
+#  % python notify.py & (under Windows MSYS2)
+#  % ./notify.py &      (under Linux)
 #
+################################################################################
+# License: GNU/GPLv3 -- https://gnu.org/gpl-3.0
 ################################################################################
 # No Shebang line under Windows !!!
 
