@@ -11,8 +11,8 @@
 # to addictional work behavior due to the fact that our coding challenges can
 # be very enganging.
 #
-# So this is a little notifier, using the Windows notification service,
-# reminding us to do a little break.
+# So this is a little notifier using the notification service reminding us 
+# to do a little break.
 #
 # Have a lot of Fun ...
 #
