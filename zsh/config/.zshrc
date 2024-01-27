@@ -110,11 +110,14 @@ pactive='kprompt' # default prompt
 [[ -f ~/.zsh/zsh_zprompt ]]    && source ~/.zsh/zsh_zprompt
 toggle_prompt(){
    pactive="$1"
-   if [ "$PROMPT_ALTERNATIVE" = oneline ]; then
-      PROMPT_ALTERNATIVE=twoline
-   else
-      PROMPT_ALTERNATIVE=oneline
-   fi
+   [[ "$pactive" == 'kprompt' ]] && {
+      # This one we only have in zsh_kprompt
+      if [ "$PROMPT_ALTERNATIVE" = oneline ]; then
+         PROMPT_ALTERNATIVE=twoline
+      else
+         PROMPT_ALTERNATIVE=oneline
+      fi
+   }
    clear
    set_title
    precmd
