@@ -1,0 +1,46 @@
+#!/usr/bin/zsh
+################################################################################
+# $Id: chhwdid 2024-01-27 04:02:40 +0100 .m0rph $
+################################################################################
+# Description:
+# ------------
+# Sometimes it can be useful to change the machine's hardware ID.
+# For this we can use the script below and configure a service that
+# starts anytime the machine boots up.
+#
+#     PART I:  the script for changing the ID
+#     PART II: the service configuration.
+#
+################################################################################
+# PART I:
+
+# Regenerate machine ID
+rm -f /var/lib/dbus/machine-id
+dbus-uuidgen > /var/lib/dbus/machine-id
+cp -p /var/lib/dbus/machine-id /etc/machine-id
+chmod 0444 /etc/machione-id
+
+# SCRIPT EOF
+
+################################################################################
+# /etc/systemd/system/chhwdid.service
+# (and) systemctl enable chhwdid.service
+################################################################################
+# PART II:
+
+[Unit]
+Description=Change machine id on shutdown
+DefaultDependencies=no
+Conflicts=reboot.target
+Before=poweroff.target halt.target shutdown.target
+Requires=poweroff.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/$(whoami)/.zsh/chhwdid
+RemainAfterExit=Yes
+
+[Install]
+WantedBy=shutdown.target
+
+# SEVICE CONFIG EOF
