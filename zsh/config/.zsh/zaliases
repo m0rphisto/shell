@@ -1,0 +1,17 @@
+################################################################################
+# $Id: zaliases 4 2024-01-21 14:36:13 +0100 .m0rph $
+################################################################################
+# Run by ~/.zshrc and updated via ralias
+
+# Some aliases
+alias ralias='vim ~/.zsh/zaliases; source ~/.zsh/zaliases'
+alias rfunctions='vim ~/.zsh/zfunctions; source ~/.zsh/zfunctions'
+alias gvim='start /c/Progra~2/Vim/vim90/gvim.exe -c "set ff=unix" "$@"'
+alias vi='vim'
+alias ..='cd ..'
+alias ...='cd ../../'
+alias l='ls -alhtr'
+alias ll='ls -alhui'
+alias cp='cp -vi'
+alias mv='mv -vi'
+alias rm='rm -vi'

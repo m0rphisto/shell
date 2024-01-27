@@ -1,0 +1,18 @@
+###
+# Kali GNU Linux prompt
+###
+set_kprompt() {
+   case "$PROMPT_ALTERNATIVE" in
+      twoline)
+         # Left-side promt with user@host, datetime and pwd
+         PROMPT=$'${debian_chroot:+($debian_chroot)}%F{030}┌─${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{192}%D{%F'$psymbol$'%T%z}%b%F{030})─[%B%F{255}%(6~.%-1~/…/%3~.%5~)%b%F{030}]\n└─%B%F{040}%n%F{105}@%F{199}zsh(%1(L.%L.))%b%F{030}─ %(#.%F{196}#.%F{040}%#)%b%F{255} '
+         
+         # Right-side prompt with exit codes and background processes
+         RPROMPT=$'%(?.. %? %F{009}%B⨯%b%F{255})%(1j. %j %F{011}%B⚙%b%F{255}.)'
+         ;;
+      oneline)
+         PROMPT=$'${debian_chroot:+($debian_chroot)}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))}%B%F{%(#.red.blue)}%n@%m%b%F{255}:%B%F{%(#.blue.green)}%~%b%F{255} %# '
+         RPROMPT=
+         ;;
+   esac
+}

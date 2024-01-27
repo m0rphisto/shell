@@ -1,0 +1,18 @@
+title() {
+	if [[ $TERM == "screen" ]]
+	then
+		# Use these two for GNU Screen:
+		print -nR $' 33k'$1$' 33'\
+		print -nR $' 33]0;'$2$''
+	elif [[ $TERM == "xterm" || $TERM == "rxvt" ]]
+	then
+		# Use this one instead for XTerms:
+		print -n "\e]2;$*\a"
+	fi
+}
+precmd() { title "$HOST: ../${PWD:t}" }
+preexec() {
+	emulate -L zsh
+	local -a cmd; cmd=(${(z)1})
+	title $cmd[1]:t "$cmd[2,-1]"
+}

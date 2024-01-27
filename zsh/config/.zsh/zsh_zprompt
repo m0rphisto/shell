@@ -1,0 +1,23 @@
+function title {
+	case "$TERM" in
+      xterm*|rxvt*)
+		# Use this one instead for XTerms:
+        print -nR $' 33]0;'$*$''
+        #print -nR $'\033[0;'$*$''
+		;;
+	  screen*)
+        # Use these two for GNU Screen:
+        print -nR $' 33]0;'$1$' 33'\
+        print -nR $' 33]0;'$2$''
+		;;
+	esac
+}
+
+set_zprompt() {
+   PS1=$'%{$FGLGzsh$ZSH_VERSION$OFF%} '
+   PROMPT=$'${(e)ptitle}%F{014}┌%F{105}─(%F{192}%D{%F'$psymbol$'%T%z}%F{105})─%F{014}'$pfiller$'─┐\n%F{014}└%F{105}─(%(!.%F{196}%SROOT%s.%F{040}%n):%y%F{105})─%F{014}─%(?..$LRED %?)%F{255} %B%#%b '
+   RPROMPT=$' %F{014}─%F{105}─(%F{040}%Bzsh %1(L.$SHLVL.)(%j)%b%F{105})─%F{014}─┘%F{255}'
+   PS2=$'%F{014}└─%F{105}─(%F{040}%_%F{105})─%F{014}─┐\n%F{255} %B%#%b '
+}
+
+# EOF

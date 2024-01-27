@@ -1,0 +1,23 @@
+preexec() {
+   case "$pactive" in
+
+      kprompt)
+         local CMD=${1[(wr)^(*=*|sudo|-*)]}
+         echo -n "\ek$CMD\e\\"
+         ;;
+
+      zprompt)
+         emulate -L zsh
+         local -a cmd; cmd=(${(z)1})
+         title $cmd[1]:t "$cmd[2,-1]"
+         ;;
+
+      workprompt|ptsprompt)
+         if [[ $scr != 0 ]]
+	      then
+		      local CMD=${1[(wr)^(*=*|sudo|-*)]}
+		      echo -n "\ek$CMD\e\\"
+         fi
+         ;;
+   esac
+}

@@ -1,0 +1,28 @@
+###
+# A really great ZSH prompt.Many thanks for sharing!!!
+# Credits go to:
+#   Phil! Gold <http://aperiodic.net/phil/>
+##
+
+set_ptsprompt () {
+   
+   ###
+   # APM detection
+   
+   if which ibam > /dev/null; then
+      APM=$'%F{196}${${APM_RESULT[(f)1]}[(w)-2]}%%(${${APM_RESULT[(f)3]}[(w)-1]})%F{045}:'
+   elif which apm > /dev/null; then
+      APM='%F{196}${APM_RESULT[(w)5,(w)6]/\% /%%}%F{045}:'
+   else
+      APM=''
+   fi
+   
+   
+   ###
+   # Finally, the prompt.
+   PROMPT=$'$STITLE${(e)ptitle}%F{014}┌%F{105}─(%F{040}%(!.%SROOT%s.%n)$psymbol%m:%l%F{105})─%F{014}─${(e)pfiller}%F{105}─(%F{199}%$PWDLEN<...<%~%<<%F{105})─%F{014}┐\n└%F{105}─(%(?..%F{196}%?%F{105}:)${(e)APM}%F{192}%D{%H:%M}%F{105}:%F{199}%1(L.%L.):%F{%(!.196.255)}%#%F{105})─%F{014}─%F{255} '
+   RPROMPT=$' %F{014}─%F{105}─(%F{192}%D{%a,%b%d}%F{105})─%F{014}┘'
+   PS2=$'%F{014}─%F{105}─(%F{040}%_%F{105})─%F{014}─%F{255} %# '
+}
+
+# EOF

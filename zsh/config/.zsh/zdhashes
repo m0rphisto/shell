@@ -1,0 +1,5 @@
+#hash -d oscms=~/00_downloads/OpenSource/PHP/CMS
+#hash -d ossrc=~/00_downloads/OpenSource/src
+hash -d cperl=/e/work/coding/perl
+hash -d cpython=/e/work/coding/python
+hash -d cC=/e/work/coding/C

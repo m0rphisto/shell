@@ -1,0 +1,46 @@
+################################################################################
+# $Id: zcolors v5 2010-05-17 20:31:48 +0200 uwalter $
+################################################################################
+
+##
+# FOREGROUND COLORS
+
+# Light-Bold
+FGBS=$'\e[01;30m' # grey (shadow)
+FGBR=$'\e[01;31m' # red
+FGBG=$'\e[01;32m' # green
+FGBY=$'\e[01;33m' # yellow
+FGBB=$'\e[01;34m' # blue
+FGBM=$'\e[01;35m' # magenta
+FGBC=$'\e[01;36m' # cyan
+FGBW=$'\e[01;37m' # white
+
+# Dark-Normal 
+FGNS=$'\e[30m'    # black (shadow)
+FGNR=$'\e[31m'    # red
+FGNG=$'\e[32m'    # green
+FGNY=$'\e[33m'    # yellow
+FGNB=$'\e[34m'    # blue
+FGNM=$'\e[35m'    # magenta
+FGNC=$'\e[36m'    # cyan
+FGNW=$'\e[37m'    # grey-white
+
+
+##
+# BACKGROUND COLORS
+
+BGB=$'\e[40m'    # black (shadow)
+BGR=$'\e[41m'    # red
+BGG=$'\e[42m'    # green
+BGY=$'\e[43m'    # yellow
+BGK=$'\e[44m'    # kings-blue
+BGM=$'\e[45m'    # magenta
+BGC=$'\e[46m'    # light-cyan
+BGW=$'\e[47m'    # white
+
+
+##
+# ALL COLOR OFF
+
+OFF=$'\e[0m'
+

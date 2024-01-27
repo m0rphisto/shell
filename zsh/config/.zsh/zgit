@@ -1,0 +1,17 @@
+################################################################################
+# $Id: zgit 2 2024-01-26 18:55:14 +0100 .m0rph $
+################################################################################
+
+read 'gitten?Wanna play with GITten? ... [yn]: '
+[[ "$gitten" =~ ^[yY]$ ]] && {
+   # FUCKING WINDOWS is not an X session. No keyrings, no parent ssh-agent
+   # host-process. So we have to start an instance of the ssh-agent for 
+   # every single zsh session !!!
+   [[ -z "$SSH_AUTH_SOCK" && -z "$SSH_AGENT_PID" ]] && {
+      eval "$(ssh-agent -s)"
+      ssh-add ~/.ssh/your_ssh_key_file
+   }
+   cd /your/path/to/git/repositories
+}
+
+# EOF

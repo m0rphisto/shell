@@ -1,0 +1,36 @@
+################################################################################
+# $Id: zoptions 1 2024-01-21 14:16:02 +0100 .m0rph $
+################################################################################
+# Run by ~/.zshrc
+
+setopt hist_find_no_dups
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+
+# append history list to the history file; this is the default, but we make sure
+# because it's required for share_history -->(SHARE COMMANDS IMMEDIATELY)
+setopt append_history
+setopt share_history
+
+# Some grml settings
+setopt extended_history       # save each command's beginning timestamp and the duration
+setopt notify                 # report the status of background jobs immediately
+setopt longlistjobs           # display PID when suspending jobs as well
+
+
+setopt autocd              # change directory just by typing its name
+setopt correct            # auto correct mistakes
+setopt interactivecomments # allow comments in interactive mode
+setopt magicequalsubst     # enable filename expansion for arguments of the form ‘anything=expression’
+setopt nonomatch           # hide error message if there is no match for the pattern
+setopt notify              # report the status of background jobs immediately
+setopt numericglobsort     # sort filenames numerically when it makes sense
+setopt promptsubst         # enable command substitution in prompt
+#setopt extendedglob        # ebable extended globbing (case (in)sensitivity, (lower|upper)case, etc)
+
+# from msys2 zsh package
+setopt beep nomatch
+
+# EOF

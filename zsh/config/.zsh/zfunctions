@@ -1,0 +1,27 @@
+################################################################################
+# $Id: zfunctions 2 2024-01-21 14:38:47 +0100 .m0rph $
+################################################################################
+# Run by ~/.zshrc and updated via rfunctions
+# Some functions, quasi-aliases.
+
+export user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
+export header_ua='User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36'
+
+wman() {
+# My own windwows man pages in /c/.man
+   [[ ! -z "$1" ]] && {
+      #iconv -f latin1 < /c/.man/$1.txt | less
+      cat /c/.man/$1.txt | less
+   } || {
+      echo 'Whoops, somthing went wrong. No parameter !!!'
+   }
+}
+
+getpkg() {
+   wget -U "$user_agent" -O "$1" "https://repo.msys2.org/msys/x86_64/$1"
+}
+
+leo() { w3m "https://dict.leo.org/englisch-deutsch/$1" }
+dict() { w3m "https://www.dict.cc/?s=$1" }
+duden() { w3m "https://duden.de/rechtschreibung/$1" }
+google() { w3m -header "$header_ua" "https://www.google.com/?q=$1" }

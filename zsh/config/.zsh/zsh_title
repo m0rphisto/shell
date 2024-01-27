@@ -1,0 +1,29 @@
+################################################################################
+# $Id: zsh_title 3 2024-01-26 15:56:57 +0100 .m0rph $
+################################################################################
+# If this is an xterm set the title to host:dir
+
+set_title() {
+   # set a fancy prompt (non-color, unless we know we "want" color)
+   case "$TERM" in
+      xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty)
+         ptitle=$'\e]0;${debian_chroot:+($debian_chroot)}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))}%m: %0(3c,%c,%~)\a'
+         color_prompt=yes
+         psymbol=㉿
+         # Skull emoji for root terminal
+         [ "$EUID" -eq 0 ] && psymbol=💀
+         ;;
+      screen)
+         ptitle=$'%{\e_screen \005 (\005t) | %(!.-=[ROOT]=- | .)%m: ../%c \e\\%}'
+         psymbol=㉿
+         [ "$EUID" -eq 0 ] && psymbol=💀
+         ;;
+      *) 
+         # The prompt_symbol does only work on pts terminals, not on TTYs.
+         psymbol='@'
+         ptitle=''
+         ;;
+   esac
+}
+
+# EOF
