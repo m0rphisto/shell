@@ -1,0 +1,80 @@
+#!/usr/bin/zsh
+################################################################################
+# $Id: efsearch v0.4 2024-01-22 22:22:10 +0100 .m0rph $
+################################################################################
+# Inspired by the mailing list: zsh-users@zsh.org
+#
+# Description:
+# ------------
+# The problem in an email on the list was that the command took way too much
+# time, because the recursive search did senseless lookups at /proc and /sys,
+# so the guy needed a way to exclude these directories from searching.
+#
+# Bench formula:
+#  ms = ns / 1e6 OR 
+#  ms = ns * 1e-6 (preferable cause multiplication is faster than division)
+# 1ns = 1e-6ms
+################################################################################
+# TESTING SCRIPT !!!
+
+# unix timestamps in type integer
+typeset -i ns1=0
+typeset -i ns2=0
+
+# elapsed time in type double (double precision float)
+typeset -F ms=0.00
+
+# declare an associative array
+typeset -A cmds
+cmds=(
+   [v1]='print -l /**/*/etc/r*(/N)'           # variant one (bad)
+   [v2]='print -l /**/*etc/r*(/N)'            # variant two (good) <-- !!!
+   [v3]='print -l /**/^(proc|sys)/etc/r*(/N)' # this solution has empty results
+   [v4]='print -l /^(proc|sys)/**/etc/r*(/N)' # another try (also empty)
+# These ones need setopt extended_glob (we will see time results)
+   [v5]='print -l /(^(proc|sys)/)#etc/r*(/N)' # another try ()
+   [v6]='print -l /(*/)#etc/r*(/N)'           # interesting, but too long
+# ToDo: Is ....(/N) equivalent to s/...$/,,,/ ???
+)
+
+prepend() {
+   print -l "Performing search variant ${1} ... ${2}"
+   string="
+################################################################################
+# efsearch variant ${1}: ${2}
+################################################################################
+"
+   echo $string > efsearch.$1.list
+}
+append() {
+   string="
+################################################################################
+# variant ${1} took ${2}ms
+################################################################################
+"
+   echo $string >> efsearch.$1.list
+}
+
+# Dont use seconds, cause it's not fine enough!
+# date +'%s'   := unix timestamp in seconds (epoch time)
+# date +'%s%N' := unix timestamp in ns      (epoch time)
+setopt extended_glob
+search() {
+   ns1=$(date +'%s%N')
+   eval "$cmds[$1]" >> "efsearch.${1}.list"
+   ns2=$(date +'%s%N')
+   ms=$[($ns2 - $ns1)*1e-6]
+}
+
+# Perform search variants
+prepend 'v1' "$cmds[v1]"; search 'v1'; append 'v1' "$ms"
+prepend 'v2' "$cmds[v2]"; search 'v2'; append 'v2' "$ms"
+prepend 'v3' "$cmds[v3]"; search 'v3'; append 'v3' "$ms"
+prepend 'v4' "$cmds[v4]"; search 'v4'; append 'v4' "$ms"
+prepend 'v5' "$cmds[v5]"; search 'v5'; append 'v5' "$ms"
+prepend 'v6' "$cmds[v6]"; search 'v6'; append 'v6' "$ms"
+
+
+exit 0
+
+# EOF
