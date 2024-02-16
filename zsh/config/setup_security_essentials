@@ -118,3 +118,5 @@ rm twcfg.txt twpol.txt
 print -l -- 'Security essentials setup completed.'
 
 exit 0
+
+# EOF
