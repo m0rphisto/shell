@@ -1,0 +1,109 @@
+#!/bin/zsh
+################################################################################
+# $Id: setup_security_essentials 2024-02-16 13:38:15 +0100 .m0rph $
+################################################################################
+# Desctiption:
+#
+# Setting up a Debian system with Cyber Essentials involves implementing a 
+# series of security best practices. Here's a basic Zsh script that you can use
+# as a starting point.
+#
+# Please note that this script assumes you have administrative privileges 
+# (root/sudo) to execute these commands.
+#
+# ------------------------------------------------------------------------------
+#
+# Note:
+# Make sure to review and understand each command before running the script,
+# as it modifies system configurations. Additionally, consider customizing
+# the script based on your specific requirements and environment.
+# ------------------------------------------------------------------------------
+#
+# Have a lot of Fun ...
+#
+# .m0rph
+#
+################################################################################
+
+[[ $(id -u) != 0 ]] && {
+   print -l -- 'You must be root to run this script. Exiting !!!'
+   exit 1
+}
+
+print -l -- 'Setting up security essentials ...'
+
+
+# Update the package list and upgrade existing packages
+apt update && apt upgrade -y
+
+# Install essential security tools
+apt install -y unattended-upgrades fail2ban
+
+# Configure unattended-upgrades
+dpkg-reconfigure -plow unattended-upgrades
+
+# Configure fail2ban
+cp /etc/fail2ban/jail.{conf,local}
+systemctl restart fail2ban
+
+
+# Another good idea is to install the tiger package
+# https://manpages.debian.org/bookworm/tiger/tiger.8.en.html
+apt install -y tiger
+
+
+# Enable firewall (ufw) and allow necessary services
+# https://manpages.debian.org/bookworm/ufw/ufw.8.en.html
+apt install -y ufw
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+ufw enable
+
+
+# Make sure securing logins via SSH and note to keep track of the
+# key_files or you're locked out from your own RootServer !!!
+sed -i 's/#SyslogFacility AUTH/SyslogFacility AUTH/' /etc/ssh/sshd_config
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
+sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
+sed -i 's/#AuthorizedKeysFile/AuthorizedKeysFile/' /etc/ssh/sshd_config
+sed -i 's/X11Forwarding yes/X11Forwarding no/' /etc/ssh/sshd_config
+sed -i 's/AllowTcpForwarding yes/AllowTcpForwarding no/' /etc/ssh/sshd_config
+sed -i 's/PermitTTY yes/PermitTTY no/' /etc/ssh/sshd_config
+systemctl restart ssh
+
+
+# Install and configure a basic intrusion detection system (IDS)
+apt install -y rkhunter chkrootkit
+rkhunter --update
+rkhunter --propupd
+
+# Enable automatic security updates
+dpkg-reconfigure -plow unattended-upgrades
+
+
+# And finally setup a file checksum tools to keep track of the systems actual
+# state. Please note, that you will have to keep the  local key passphrase
+# at a secure place.
+#
+# You can follow the steps described under:
+# https://www.oreilly.com/library/view/linux-security-cookbook/0596003919/ch01s01.html
+# https://manpages.debian.org/bookworm/tripwire/tripwire.8.en.html
+apt install -y tripwire
+cd /etc/tripwire
+./twinstall.sh
+tripwire --init
+rm twcfg.txt twpol.txt
+
+
+# Additional steps (customize based on your needs)
+# *** https://www.debian.org/doc/manuals/securing-debian-manual/
+# *** https://www.uni-koeln.de/~pbogusze/posts/Securing_and_hardening_UNIX_and_UNIXlike_hosts.html
+# - Install and configure a host-based intrusion detection system (HIDS) like OSSEC
+# - Harden the system by modifying user privileges, permissions and remove SUID bits wherever possible
+# - Regularly audit and review system logs
+
+print -l -- 'Security essentials setup completed.'
+
+exit 0
