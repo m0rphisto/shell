@@ -41,7 +41,7 @@ print -l -- 'Setting up security essentials ...'
 apt update && apt upgrade -y
 
 # Install essential security tools
-apt install -y unattended-upgrades fail2ban
+apt install -y unattended-upgrades fail2ban chkrootkit tripwire
 
 # Configure unattended-upgrades
 dpkg-reconfigure -plow unattended-upgrades
@@ -79,7 +79,7 @@ systemctl restart ssh
 
 
 # Install and configure a basic intrusion detection system (IDS)
-apt install -y rkhunter chkrootkit
+apt install -y rkhunter
 rkhunter --update
 rkhunter --propupd
 
@@ -94,10 +94,10 @@ dpkg-reconfigure -plow unattended-upgrades
 # You can follow the steps described under:
 # https://www.oreilly.com/library/view/linux-security-cookbook/0596003919/ch01s01.html
 # https://manpages.debian.org/bookworm/tripwire/tripwire.8.en.html
-apt install -y tripwire
 cd /etc/tripwire
 ./twinstall.sh
 tripwire --init
+tripwire --check
 rm twcfg.txt twpol.txt
 
 
