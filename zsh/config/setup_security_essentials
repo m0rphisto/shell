@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/zsh
 ################################################################################
 # $Id: setup_security_essentials 2024-02-16 13:38:15 +0100 .m0rph $
 ################################################################################
@@ -17,6 +17,10 @@
 # Make sure to review and understand each command before running the script,
 # as it modifies system configurations. Additionally, consider customizing
 # the script based on your specific requirements and environment.
+#
+# Please also note that you do not need to run this script with the Z-Shell.
+# Just modify the shebang line to bash, if you need to. ;-)
+#
 # ------------------------------------------------------------------------------
 #
 # Have a lot of Fun ...
