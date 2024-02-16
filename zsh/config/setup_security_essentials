@@ -67,14 +67,16 @@ ufw enable
 
 # Make sure securing logins via SSH and note to keep track of the
 # key_files or you're locked out from your own RootServer !!!
-sed -i 's/#SyslogFacility AUTH/SyslogFacility AUTH/' /etc/ssh/sshd_config
-sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin no/' /etc/ssh/sshd_config
-sed -i 's/#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
-sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
-sed -i 's/#AuthorizedKeysFile/AuthorizedKeysFile/' /etc/ssh/sshd_config
-sed -i 's/X11Forwarding yes/X11Forwarding no/' /etc/ssh/sshd_config
-sed -i 's/AllowTcpForwarding yes/AllowTcpForwarding no/' /etc/ssh/sshd_config
-sed -i 's/PermitTTY yes/PermitTTY no/' /etc/ssh/sshd_config
+sedssh=''
+sedssh=$sedssh's/#\(PermitRootLogin\) prohibit-password/\1 no/; '
+sedssh=$sedssh's/#\(PasswordAuthentication\) yes/\1 no/; '
+sedssh=$sedssh's/#\(PubkeyAuthentication yes\)/\1/; '
+sedssh=$sedssh's/#\(AuthorizedKeysFile\)/\1/; '
+sedssh=$sedssh's/\(X11Forwarding\) yes/\1 no/; '
+sedssh=$sedssh's/#\(AllowTcpForwarding\) yes/\1 no/; '
+sedssh=$sedssh's/#\(PermitTTY\) yes/\1 no/'
+cp -p /etc/ssh/sshd_config /etc/ssh/sshd_config.$(date +'%Y%m%d-%H%M%S').bak
+cat /etc/ssh/sshd_config | sed -e "$sedssh" > /etc/ssh/sshd_config
 systemctl restart ssh
 
 
