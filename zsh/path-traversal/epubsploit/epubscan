@@ -1,0 +1,23 @@
+#!/usr/bin/zsh
+################################################################################
+# $Id: epubscan v1.0 2024-01-28 09:32:10 +0100 .m0rph $
+################################################################################
+
+if [[ $(file -b "$1") == 'EPUB document' ]]; then
+   if [[ $(unzip -l "$1" | grep -E '\.\./') ]]; then
+      print -l '[x] Malicious EPUB Document detected'
+      read 'makesafe?[+] Do you want to make it safe to open? [Y/N]: '
+      [[ "$makesafe" =~ ^[Yy]$ ]] && {
+         sed -i s/"\.\.\/"/"__\/"/g ${1}
+         echo "[+] Safe!"
+      }
+   else
+      echo "[+] Safe!"
+   fi
+else
+   echo "Not an EPUB document"
+fi
+
+exit 0
+
+# EOF

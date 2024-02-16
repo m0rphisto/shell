@@ -1,0 +1,98 @@
+#!/bin/bash
+################################################################################
+# $Id: hello-hello v1.0 2024-02-02 12:36:02 +0100 .m0rph $
+################################################################################
+
+[[ $# -gt 0 && $1 -eq 1 ]] && {
+   # Just make us visible and say hello (called by the starter)
+   # Most of the Linux distros follow the freedesktop specs
+   dconf="$HOME/.config/user-dirs.dirs"
+   if [ -f "$dconf" ]; then
+      # We search for: XDG_DESKTOP_DIR="$HOME/DesktopTranslation"
+      desk=$(grep 'DESKTOP' $dconf | awk -F'/' '{ print $2 }' | cut -d'"' -f1)
+   else
+      # We search for: DESKTOP=Desktop
+      dconf='/etc/xdg/user-dirs.defaults'
+      desk=$(grep 'DESKTOP' $dconf | awk -F'=' '{ print $2 }')
+   fi
+   starter="#!/bin/bash
+exo-open --launch TerminalEmulator $HOME/hello-hello
+"
+   echo "$starter" > $HOME/$desk/hello-hello
+   chmod 0755 $HOME/$desk/hello-hello
+   exit
+}
+
+clear
+cat <<EOS
+################################################################################
+
+ Hello hello, $USER !!!
+
+         💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+         💀                            💀
+         💀   YOU HAVE BEEN HACKED.    💀
+         💀                            💀
+         💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+
+ Don't worry and calm down! I did no harm to your system. I am White Hat hacker
+ and security researcher. This is just a reminder allways to keep an eye on
+ system security! ANYTIME ...
+
+ We must not blindly click every link, especially on social nets.
+ Learn how it works ... that's it. ;-)
+
+
+ Do you want to know how I did it?
+ Then go on ...
+
+--------------------------------------------------------------------------------
+[your choice -- default is yes][y/n]
+EOS
+read close
+if [[ "$close" != 'n' && "$close" != 'N' ]]
+then
+   cat <<EOS
+
+ OK, so let's go on ...
+ ======================
+
+ You did download an epub document, right?
+ 
+   -- {EPUB_NAME}
+
+ This one is infected by a malicious mechanism, called "path traversal attack",
+ which finally saved a little bash script in your ~/home directory and a new
+ starter in your ~/.config/autostart directory. With the next login into
+ a new X-Session it has been executed. -- Voilá.
+
+
+ Check the following files:
+ --------------------------
+ $HOME/.config/autostart/hello-hello.desktop
+ $HOME/hello-hello
+
+
+ And check my GitHub! There you can find the complete hack. 💀
+ -------------------------------------------------------------
+ https://github.com/m0rphisto/shell/epubsploit
+
+
+ So never logoff and on again due to an error message!
+ It might be a forgery !!!
+
+
+ Have a lof of Fun ...
+
+ .m0rph
+
+--------------------------------------------------------------------------------
+ To get the full content, scroll a bit back. ;-)
+--------------------------------------------------------------------------------
+To close this window just hit Enter.
+EOS
+   read close
+   exit 0
+fi
+
+# EOF
