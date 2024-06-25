@@ -5,7 +5,7 @@
 fid='$Id: quizgame.py v0.2 2024-06-25 05:56:12 +0200 .m0rph $'
 ################################################################################
 # Description:
-# Found on github and set it licenced it.
+# Found on github and licenced it.
 # https://github.com/butterflyx/multichoice-quiz/blob/main/quizgame.py
 #
 # Used for the bsi-quiz: IT-Grundschutzpraktiker and IT-Sicherheitsbeauftragter
