@@ -226,16 +226,12 @@ A quiz game for multiple choice tests
       keys = []
       securityQuestion = False
 
-      print("")
-      print(f"Category: {self.question['chapter']}")
-      print("")
-      print(Colors.blue("Question:")+f" {self.question['question']}")
-      print("")
+      print(f"\nCategory: {self.question['chapter']}")
+      print(Colors.blue("\nQuestion:")+f" {self.question['question']}\n")
       for key, answer in self.question['answers']:
          keys.append(key.upper())
          print(Colors.blue(f"({key}) ")+f"{answer}") 
-      print("")
-      print(f">> ")
+      print(f"\n>> ")
       options = list(sorted(set(keys).difference(answers)))
       try:
          while(options != []):
@@ -249,17 +245,17 @@ A quiz game for multiple choice tests
                securityQuestion = False
             elif choice == "" and securityQuestion == True:
                return answers
-            elif choice == "" and securityQuestion == False:
+            elif choice == '' and securityQuestion == False:
                securityQuestion = True
-               print(Colors.blue("Sure you have all answers marked? Press Enter again to finish this question."))
+               print(Colors.blue('Sure you have all answers marked? Press Enter again to finish this question.'))
             else:
-               print(Colors.red("Invalid choice. Try again"))
+               print(Colors.red('Invalid choice. Try again'))
                securityQuestion = False
             options = list(sorted(set(keys).difference(answers)))
          return answers   
       except KeyboardInterrupt:
          choice = input(Colors.yellow("\n\nDo you want to interrupt the quiz? (y/n) : "))
-         if choice.lower() == "y":
+         if choice.lower() == 'y':
             self.breakFlag = True
             return False
          else:
@@ -272,15 +268,15 @@ A quiz game for multiple choice tests
          if args.d:
             # .m0rph: Direct result output (correct answer)
             print(Colors.green(f"Correct! {answers} == {self.question['right']}"))
-            input(Colors.yellow(f"Next [ENTER]: "))
+            input(Colors.yellow('Next [ENTER]:'))
          self.questionsRightAnswered.append(self.question)
          self.question = []
          return True
       if args.d:
          # .m0rph: Direct result output (wrong answer)
          print(Colors.red(f"Choice not correct! {answers} != {self.question['right']}"))
-         input(Colors.yellow(f"Next [ENTER]: "))
-      self.question["useranswers"] = answers
+         input(Colors.yellow('Next [ENTER]:'))
+      self.question['useranswers'] = answers
       self.questionsWrongAnswered.append(self.question)
       self.question = []
       return False
@@ -357,8 +353,7 @@ A quiz game for multiple choice tests
       print("~~~~~~~~~~")
       print(f"{self.rawGame['meta']['title']}")
       print("~~~~~~~~~~")
-      print(f"brought to you by: {self.rawGame['meta']['author']}")
-      print("")
+      print(f"Brought to you by: {self.rawGame['meta']['author']}\n")
       if self.rawGame["meta"]["contributors"] != []:
          print("with contributions by:")
          for supporter in self.rawGame["meta"]["contributors"]:
@@ -366,14 +361,12 @@ A quiz game for multiple choice tests
       # .m0rph: Added disclaimer output
       if self.rawGame['meta']['disclaimer'] != []:
          print("~~~~~~~~~~")
-         print(f"disclaimer:\n{self.rawGame['meta']['disclaimer']}")
+         print(f"Disclaimer:\n{self.rawGame['meta']['disclaimer']}")
          print("~~~~~~~~~~")
       print("")
-      print(f"licence: {self.rawGame['meta']['licence']}")
-      print("")
-      print(f"please visit {self.rawGame['meta']['homepage']} for more information.")
-      print("")
-      print("Bye.\n")
+      print(f"Licence: {self.rawGame['meta']['licence']}\n")
+      print(f"Please visit {self.rawGame['meta']['homepage']} for more information.\n")
+      print('Bye.\n')
       exit(0)
 
 
@@ -478,8 +471,8 @@ if __name__ == "__main__":
    print("")
    parser = argparse.ArgumentParser(formatter_class=argparse.MetavarTypeHelpFormatter)
    parser.add_argument('quizname', type=str, help='Name of the quiz you want to play')
-   parser.add_argument('--t', nargs='?', type=int, help='THRESHOLD for passing the quiz in percent (rounded). Show success or failure message at the end.')
-   parser.add_argument('--l', nargs='?', type=int, help='LIMIT the number of questions in a quiz. No effect if number of available question less then limit.')
+   parser.add_argument('-t', nargs='?', type=int, help='THRESHOLD for passing the quiz in percent (rounded). Show success or failure message at the end.')
+   parser.add_argument('-l', nargs='?', type=int, help='LIMIT the number of questions in a quiz. No effect if number of available question less then limit.')
    parser.add_argument('-i', action='store_true', help='Print available quizzes and exit')
    # .m0rph: Direct result output functionality
    parser.add_argument('-d', action='store_true', help='Enable direct result output')
