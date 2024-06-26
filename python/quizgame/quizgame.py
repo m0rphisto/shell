@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-fid='$Id: quizgame.py v0.2 2024-06-25 05:56:12 +0200 .m0rph $'
+fid='$Id: quizgame.py v0.3 2024-06-26 18:37:44 +0200 .m0rph $'
 ################################################################################
 # Description:
 # Found on github and licenced it.
@@ -17,7 +17,9 @@ fid='$Id: quizgame.py v0.2 2024-06-25 05:56:12 +0200 .m0rph $'
 # v0.2: Unfortunately this Python Script was coded under Linux and had some
 #       errors, so it didn't run under Windows.
 #
-# v0.3: Added result saving functionality for a better overview of the learning
+# v0.3: Added direct result output.
+#
+# v0.4: Added result saving functionality for a better overview of the learning
 #       process.
 #
 # ------------------------------------------------------------------------------
@@ -269,11 +271,15 @@ A quiz game for multiple choice tests
    def validateAnswer(self, answers) -> bool:
       """ check if answer given was right """
       if sorted(answers) == sorted(self.question['right']):
-         #print(f"Right! {answers} == {self.question['right']}")
+         # .m0rph: Added direct result output (correct answer)
+         print(Colors.green(f"Right! {answers} == {self.question['right']}"))
+         input(Colors.yellow(f"Next [ENTER]: "))
          self.questionsRightAnswered.append(self.question)
          self.question = []
          return True
-      #print(f"Question not correctly answered! {answers} != {self.question['right']}")
+      # .m0rph: Added direct result output (wrong answer)
+      print(Colors.red(f"Choice not correct! {answers} != {self.question['right']}"))
+      input(Colors.yellow(f"Next [ENTER]: "))
       self.question["useranswers"] = answers
       self.questionsWrongAnswered.append(self.question)
       self.question = []
@@ -285,6 +291,7 @@ A quiz game for multiple choice tests
       return self.threshold
 
 
+   # m0rph: Added result saving functionality
    def printResults(self) -> None:
       """ print the results of the quiz """
       qleft = self.getQuestionsLeft()+1 if self.breakFlag else self.getQuestionsLeft() # +1 for current question
@@ -356,6 +363,11 @@ A quiz game for multiple choice tests
          print("with contributions by:")
          for supporter in self.rawGame["meta"]["contributors"]:
             print(f"{supporter}")
+      # .m0rph: Added disclaimer output
+      if self.rawGame['meta']['disclaimer'] != []:
+         print("~~~~~~~~~~")
+         print(f"disclaimer:\n{self.rawGame['meta']['disclaimer']}")
+         print("~~~~~~~~~~")
       print("")
       print(f"licence: {self.rawGame['meta']['licence']}")
       print("")
