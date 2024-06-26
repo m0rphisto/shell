@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-fid='$Id: quizgame.py v0.3 2024-06-26 18:37:44 +0200 .m0rph $'
+fid='$Id: quizgame.py v0.3 2024-06-26 19:44:38 +0200 .m0rph $'
 ################################################################################
 # Description:
 # Found on github and licenced it.
@@ -16,9 +16,7 @@ fid='$Id: quizgame.py v0.3 2024-06-26 18:37:44 +0200 .m0rph $'
 #
 # v0.2: Unfortunately this Python Script was coded under Linux and had some
 #       errors, so it didn't run under Windows.
-#
-# v0.3: Added direct result output.
-#
+# v0.3: Added direct result output functionality.
 # v0.4: Added result saving functionality for a better overview of the learning
 #       process.
 #
@@ -271,15 +269,17 @@ A quiz game for multiple choice tests
    def validateAnswer(self, answers) -> bool:
       """ check if answer given was right """
       if sorted(answers) == sorted(self.question['right']):
-         # .m0rph: Added direct result output (correct answer)
-         print(Colors.green(f"Right! {answers} == {self.question['right']}"))
-         input(Colors.yellow(f"Next [ENTER]: "))
+         if args.d:
+            # .m0rph: Direct result output (correct answer)
+            print(Colors.green(f"Correct! {answers} == {self.question['right']}"))
+            input(Colors.yellow(f"Next [ENTER]: "))
          self.questionsRightAnswered.append(self.question)
          self.question = []
          return True
-      # .m0rph: Added direct result output (wrong answer)
-      print(Colors.red(f"Choice not correct! {answers} != {self.question['right']}"))
-      input(Colors.yellow(f"Next [ENTER]: "))
+      if args.d:
+         # .m0rph: Direct result output (wrong answer)
+         print(Colors.red(f"Choice not correct! {answers} != {self.question['right']}"))
+         input(Colors.yellow(f"Next [ENTER]: "))
       self.question["useranswers"] = answers
       self.questionsWrongAnswered.append(self.question)
       self.question = []
@@ -477,10 +477,12 @@ if __name__ == "__main__":
    print(Colors.blue(myquiz.BANNER))
    print("")
    parser = argparse.ArgumentParser(formatter_class=argparse.MetavarTypeHelpFormatter)
-   parser.add_argument('quizname', type=str, help='name of the quiz you want to play')
+   parser.add_argument('quizname', type=str, help='Name of the quiz you want to play')
    parser.add_argument('--t', nargs='?', type=int, help='THRESHOLD for passing the quiz in percent (rounded). Show success or failure message at the end.')
    parser.add_argument('--l', nargs='?', type=int, help='LIMIT the number of questions in a quiz. No effect if number of available question less then limit.')
-   parser.add_argument('-i', action='store_true', help='print available quizzes and exit')
+   parser.add_argument('-i', action='store_true', help='Print available quizzes and exit')
+   # .m0rph: Direct result output functionality
+   parser.add_argument('-d', action='store_true', help='Enable direct result output')
    #parser.print_help()
    args = parser.parse_args()
    if args.i:
@@ -488,3 +490,5 @@ if __name__ == "__main__":
       exit()
    else:
       myquiz.playQuiz(args)
+
+# EOF
