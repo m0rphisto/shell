@@ -12,8 +12,14 @@ fid='$Id: quizgame.py v0.2 2024-06-25 05:56:12 +0200 .m0rph $'
 # https://github.com/butterflyx/GrundschutzQuiz/blob/main/bsi.json 
 #
 # ------------------------------------------------------------------------------
-# Unfortunately this Python Script was coded under Linux and had some errors,
-# so it didn't run under Windows.
+# Version history:
+#
+# v0.2: Unfortunately this Python Script was coded under Linux and had some
+#       errors, so it didn't run under Windows.
+#
+# v0.3: Added result saving functionality for a better overview of the learning
+#       process.
+#
 # ------------------------------------------------------------------------------
 # This script is free software, licenced under GNU GPL v3.
 ################################################################################
