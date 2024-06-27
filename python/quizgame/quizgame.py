@@ -41,14 +41,15 @@ cwd = os.getcwd() # current working directory
 
 class Quiz:
    BANNER = r'''
-              _ _   _     _         _                     _    
-  _ __ ___  _   _| | |_(_) ___| |__   ___ (_) ___ ___      __ _ _   _(_)____
+                  _ _   _      _           _                            _    
+  _ __ ___  _   _| | |_(_) ___| |__   ___ (_) ___ ___        __ _ _   _(_)____
  | '_ ` _ \| | | | | __| |/ __| '_ \ / _ \| |/ __/ _ \_____ / _` | | | | |_  /
  | | | | | | |_| | | |_| | (__| | | | (_) | | (_|  __/_____| (_| | |_| | |/ / 
- |_| |_| |_|\__,_|_|\__|_|\___|_| |_|\___/|_|\___\___|     \__, |\__,_|_/___|
-                                                |_|         
+ |_| |_| |_|\__,_|_|\__|_|\___|_| |_|\___/|_|\___\___|      \__, |\__,_|_/___|
+                                                               |_|         
 A quiz game for multiple choice tests
-@author: butterflyx <info@butterflyx.com>
+@authors: butterflyx <info@butterflyx.com>
+          .m0rph <m0rphisto.net@gmail.com>
 '''
 
    def __init__(self):
