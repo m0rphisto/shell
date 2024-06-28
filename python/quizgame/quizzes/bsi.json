@@ -27,7 +27,7 @@
 					"C": "grundlegende Regelungen zur Organisation der Informationssicherheit",
 					"D": "konkrete Verhaltensregelungen für den Umgang mit vertraulichen Informationen"
 				},
-				"right":["C","D"]
+				"right":["B","C"]
 			},
 			"3":{
 				"question": "Welche Aufgaben haben üblicherweise Informationssicherheitsbeauftragte?",
@@ -62,7 +62,7 @@
 			"6":{
 				"question": "Warum kann es sinnvoll sein, sich für eine Sicherheitskonzeption gemäß der Basis-Absicherung zu entscheiden?",
 				"answers":{
-					"A": "ie Erfüllung der zugehörigen Anforderungen reicht in der Regel für ein normales Unternehmen völlig aus.",
+					"A": "Die Erfüllung der zugehörigen Anforderungen reicht in der Regel für ein normales Unternehmen völlig aus.",
 					"B": "Weil schnell Informationssicherheit umgesetzt werden muss und die Basis-Absicherung hierfür einen geeigneten Einstieg bietet.",
 					"C": "Weil Informationssicherheit Schritt für Schritt umgesetzt werden soll. Mittelfristig kann das Sicherheitskonzept nach Standard-Absicherung ausgebaut werden.",
 					"D": "Weil die hochwertigen Informationen dringend geschützt werden müssen. Die Basis-Absicherung sorgt für den angemessenen Schutz der „Kronjuwelen“ einer Institution."
@@ -314,7 +314,7 @@
 				"right":["A","C","D"]
 			},
 			"6":{
-				"question": "elche Anwendungen sind in der Strukturanalyse zu erfassen?",
+				"question": "Welche Anwendungen sind in der Strukturanalyse zu erfassen?",
 				"answers":{
 					"A": "alle Anwendungen, die auf den IT-Systemen im Informationsverbund installiert sind",
 					"B": "alle Anwendungen, die für mindestens einen der bereits erfassten Geschäftsprozesse erforderlich sind",
