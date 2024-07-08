@@ -1,0 +1,1334 @@
+{
+	"meta" : {
+		"title" : "Übungsfragen für den IT-Sicherheitsbeaufragten",
+		"author" : ".m0rph <m0rphisto.net@gmail.com>",
+		"licence" : "CC BY 3.0 DE <https://creativecommons.org/licenses/by/3.0/de/>",
+		"homepage" : "https://github.com/m0rphisto/",
+		"contributors" : [],
+      "disclaimer": "In dieser JSON Datei sind auch Fragen, die mit Lösungen direkt von der BSI Seite kopiert wurden. Diese Inhalte sind urheberrechtlich geschützt und dürfen nicht zu kommerziellen Zwecken eingesetzt werden. Sie dienen lediglich meinem Lernziel !!!\n\nAußerdem kommen Fragen mehrfach vor, nur dass sie anders formuliert sind. Dies erhöhrt den Lerneffenkt."
+	},
+	"quiz" : {
+		"IT-SiBe" : {
+			"1":{
+				"question": "Welches Modell liegt dem in BSI-Standard 200-1 beschriebenen Sicherheitsprozess zugrunde?",
+				"answers":{
+					"A": "ein Zyklus aus den Schritten Plan, Do, Check und Act",
+					"B": "ein Verfahren zur Definition eines State-of-the-Art-Informationssicherheitsniveaus",
+					"C": "ein auf stetige Verbesserung angelegtes Modell",
+					"D": "ein Modell aus technischen Sicherheitsmaßnahmen"
+				},
+				"right":["A","C"]
+			},
+			"2":{
+				"question": "Was sollte eine Leitlinie zur Informationssicherheit enthalten?",
+				"answers":{
+					"A": "detaillierte technische Vorgaben für die Konfiguration wichtiger IT-Systeme",
+					"B": "Aussagen zur Bedeutung der Informationssicherheit für die betroffene Institution",
+					"C": "grundlegende Regelungen zur Organisation der Informationssicherheit",
+					"D": "konkrete Verhaltensregelungen für den Umgang mit vertraulichen Informationen"
+				},
+				"right":["B","C"]
+			},
+			"3":{
+				"question": "Welche Aufgaben haben üblicherweise Informationssicherheitsbeauftragte?",
+				"answers":{
+					"A": "die Entwicklung von Sicherheitskonzepten zu koordinieren",
+					"B": "die eingesetzte Sicherheitstechnik zu konfigurieren",
+					"C": "der Leitungsebene über den Stand der Informationssicherheit zu berichten",
+					"D": "Presseanfragen zum Stand der Informationssicherheit im Unternehmen zu beantworten"
+				},
+				"right":["A","C"]
+			},
+			"4":{
+				"question": "Wie setzt sich ein IS-Management-Team geeignet zusammen?",
+				"answers":{
+					"A": "Aus jeder Abteilung des Unternehmens oder der Behörde werden Mitarbeiter entsandt, damit alle Bereiche gut vertreten sind.",
+					"B": "Nur der IT-Leiter ordnet einige Mitarbeiter in das Team ab.",
+					"C": "Die Zusammensetzung sollte auf Freiwilligkeit beruhen. Jeder der Interesse hat, wird aufgenommen.",
+					"D": "Die Geschäftsleitung setzt das Team aus Verantwortlichen für bestimmte IT-Systeme, Anwendungen, Datenschutz und IT-Service und (sofern vorhanden) dem ICS-ISB zusammen"
+				},
+				"right":["D"]
+			},
+			"5":{
+				"question": "Wer ist für die Freigabe der Leitlinie zur Informationssicherheit verantwortlich?",
+				"answers":{
+					"A": "das IS-Management-Team",
+					"B": "der ISB",
+					"C": "die Unternehmens- oder Behördenleitung",
+					"D": "die Öffentlichkeitsabteilung eines Unternehmens oder einer Behörde"
+				},
+				"right":["C"]
+			},
+			"6":{
+				"question": "Warum kann es sinnvoll sein, sich für eine Sicherheitskonzeption gemäß der Basis-Absicherung zu entscheiden?",
+				"answers":{
+					"A": "Die Erfüllung der zugehörigen Anforderungen reicht in der Regel für ein normales Unternehmen völlig aus.",
+					"B": "Weil schnell Informationssicherheit umgesetzt werden muss und die Basis-Absicherung hierfür einen geeigneten Einstieg bietet.",
+					"C": "Weil Informationssicherheit Schritt für Schritt umgesetzt werden soll. Mittelfristig kann das Sicherheitskonzept nach Standard-Absicherung ausgebaut werden.",
+					"D": "Weil die hochwertigen Informationen dringend geschützt werden müssen. Die Basis-Absicherung sorgt für den angemessenen Schutz der „Kronjuwelen“ einer Institution."
+				},
+				"right":["B","C"]
+			},
+			"7":{
+				"question": "Welche Informationen beinhaltet die IT-Grundschutz-Methodik (BSI-Standard 200-2)?",
+				"answers":{
+					"A": "besonders schutzwürdigen Komponenten",
+					"B": "methodische Hilfestellungen zur schrittweisen Einführung eines ISMS",
+					"C":"wie die Informationssicherheit im laufenden Betrieb aufrechterhalten und kontinuierlich verbessert werden kann",
+					"D":"effiziente Verfahren, um die allgemeinen Anforderungen des BSI-Standards 200-1 zu konkretisieren"
+				},
+				"right":["B","C","D"]
+			},
+			"8":{
+				"question":"Welche Schichten gehören zu den Prozess-Bausteinen im IT-Grundschutz-Kompendium?",
+				"answers":{
+					"A":"ISMS",
+					"B":"APP",
+					"C":"OPS",
+					"D":"DER"
+				},
+				"right":["A","C","D"]
+			},
+			"9":{
+				"question":"Welche Schichten gehören zu den Sytem-Bausteinen im IT-Grundschutz-Kompendium?",
+				"answers":{
+					"A":"IND",
+					"B":"APP",
+					"C":"NET",
+					"D":"INF"
+				},
+				"right":["A","B","C","D"]
+			},
+			"10":{
+				"question":"Was gehört zu den Aufgaben des IT Grundschutz nach BSI?",
+				"answers":{
+					"A": "systematisch nach Schwachstellen suchen",
+					"B": "die Angemessenheit umgesetzter Schutzmaßnahmen prüfen",
+					"C": "Sicherheitskonzepte entwickeln und fortzuschreiben die allgemein anerkannten Standards genügen",
+					"D": "Das Management von der Haftung auszunehmen"
+				},
+				"right":["A","B","C"]
+			},
+			"11":{
+				"question": "Welches Modell liegt dem in BSI-Standard 200-1 beschriebenen Sicherheitsprozess zugrunde?",
+				"answers":{
+					"A": "ein Zyklus aus den Schritten Plan, Do, Check und Act",
+					"B": "ein Verfahren zur Definition eines State-of-the-Art-Informationssicherheitsniveaus",
+					"C": "ein auf stetige Verbesserung angelegtes Modell",
+					"D": "ein Modell aus technischen Sicherheitsmaßnahmen"
+				},
+				"right":["A","C"]
+			},
+			"12":{
+				"question": "Was sollte eine Leitlinie zur Informationssicherheit enthalten?",
+				"answers":{
+					"A": "detaillierte technische Vorgaben für die Konfiguration wichtiger IT-Systeme",
+					"B": "Aussagen zur Bedeutung der Informationssicherheit für die betroffene Institution",
+					"C": "grundlegende Regelungen zur Organisation der Informationssicherheit",
+					"D": "konkrete Verhaltensregelungen für den Umgang mit vertraulichen Informationen"
+				},
+				"right":["B","C"]
+			},
+			"13":{
+				"question": "Welche Aufgaben haben üblicherweise Informationssicherheitsbeauftragte?",
+				"answers":{
+					"A": "die Entwicklung von Sicherheitskonzepten zu koordinieren",
+					"B": "die eingesetzte Sicherheitstechnik zu konfigurieren",
+					"C": "der Leitungsebene über den Stand der Informationssicherheit zu berichten",
+					"D": "Presseanfragen zum Stand der Informationssicherheit im Unternehmen zu beantworten"
+				},
+				"right":["A","C"]
+			},
+			"14":{
+				"question": "Wie setzt sich ein IS-Management-Team geeignet zusammen?",
+				"answers":{
+					"A": "Aus jeder Abteilung des Unternehmens oder der Behörde werden Mitarbeiter entsandt, damit alle Bereiche gut vertreten sind.",
+					"B": "Nur der IT-Leiter ordnet einige Mitarbeiter in das Team ab.",
+					"C": "Die Zusammensetzung sollte auf Freiwilligkeit beruhen. Jeder der Interesse hat, wird aufgenommen.",
+					"D": "Die Geschäftsleitung setzt das Team aus Verantwortlichen für bestimmte IT-Systeme, Anwendungen, Datenschutz und IT-Service und (sofern vorhanden) dem ICS-ISB zusammen."
+				},
+				"right":["D"]
+			},
+			"15":{
+				"question": "Wer ist für die Freigabe der Leitlinie zur Informationssicherheit verantwortlich?",
+				"answers":{
+					"A": "das IS-Management-Team",
+					"B": "der ISB",
+					"C": "die Unternehmens- oder Behördenleitung",
+					"D": "die Öffentlichkeitsabteilung eines Unternehmens oder einer Behörde"
+				},
+				"right":["C"]
+			},
+			"16":{
+				"question": "Warum kann es sinnvoll sein, sich für eine Sicherheitskonzeption gemäß der Basis-Absicherung zu entscheiden?",
+				"answers":{
+					"A": "Die Erfüllung der zugehörigen Anforderungen reicht in der Regel für ein normales Unternehmen völlig aus.",
+					"B": "Weil schnell Informationssicherheit umgesetzt werden muss und die Basis-Absicherung hierfür einen geeigneten Einstieg bietet.",
+					"C": "Weil Informationssicherheit Schritt für Schritt umgesetzt werden soll. Mittelfristig kann das Sicherheitskonzept nach Standard-Absicherung ausgebaut werden. ",
+					"D": "Weil die hochwertigen Informationen dringend geschützt werden müssen. Die Basis-Absicherung sorgt für den angemessenen Schutz der „Kronjuwelen“ einer Institution."
+				},
+				"right":["B","C"]
+			},
+			"17":{
+				"question":"Welche Aussagen zur Norm ISO/IEC 27002 sind richtig?",
+				"answers":{
+					"A": "Sie gibt Rahmenempfehlungen zum Risikomanagement für Informationssicherheit",
+					"B": "spezifiziert Anforderungen an die Akkreditierung von Zertifizierungsstellen für ISMS",
+					"C": "Beschreibung von Sicherheitsmaßnahmen",
+					"D": "Die Umsetzung der Sicherheitsempfehlungen ist eine von vielen Möglichkeiten, die Anforderungen der ISO-Norm 27001 zu erfüllen"
+				},
+				"right":["C","D"]
+			},
+			"18":{
+				"question":"Welche Aussagen zur Norm ISO/IEC 31010 sind richtig?",
+				"answers":{
+					"A": "Sie beschreibt wie die Risikobeurteilung in ein Risikomanagementsystem integriert werden kann",
+					"B": "spezifiziert Anforderungen an die Akkreditierung von Zertifizierungsstellen für ISMS",
+					"C": "Enthält die Spezifika der ISMS-Zertifizierungsprozesse",
+					"D": "Gibt Rahmenempfehlungen zum Risikomanagement für Informationssicherheit"
+				},
+				"right":["A","C"]
+			},
+			"19":{
+				"question": "Welche Art von Schutz hat Informationssicherheit zum Ziel?",
+				"answers":{
+					"A": "Informationen jeglicher Art und Herkunft zu schützen",
+					"B": "Den Schutz elektronisch gespeicherter Informationen und deren Verarbeitung",
+					"C": "Den Schutz von Informationen in den Köpfen der Mitarbeiter",
+					"D": "Den Schutz von Informationen auf Papier"
+				},
+				"right":["A","B","C","D"]
+			},
+			"20":{
+				"question": "Was sind neben Vertraulichkeit, Integrität und Verfügbarkeit weitere generische Oberbegriffe der Informationssicherheit?",
+				"answers":{
+					"A": "Authentizität",
+					"B":"Verbindlichkeit", 
+					"C":"Kontinuum",
+					"D":"Resilienz"
+				},
+				"right":["A","B","D"]
+			},
+			"21":{
+				"question": "Was zeichnet einen Informationsverbund im Sinne des BSI-Grundschutz aus?",
+				"answers":{
+					"A": "eine Mindestgröße von 20 Elementen",
+					"B": "ein festgelegter Geltungsbereich",
+					"C": "eine sinnvolle Mindestgröße",
+					"D": "Teilbereiche sollten gut abgrenzbar sein"
+				},
+				"right":["B","C","D"]
+			},
+			"22":{
+				"question": "Welche Informationen und Detailangaben müssen bei der Erstaufnahme des Informationsverbundes unter anderem erfasst werden?",
+				"answers":{
+					"A": "Geschäftsprozesse im Informationsverbund (Name, Beschreibung, fachverantwortliche Stelle)",
+					"B": "IT-Systeme und ICS-Komponenten (Name, Systemplattform und eventuell Aufstellungsort)",
+					"C": "Verantwortliche Stellen und Behörden (Name, Ansprechpartner, Telefonnummern)",
+					"D": "virtuelle Systeme (entsprechend gekennzeichnet und benannt)"
+				},
+				"right":["A","B","D"]
+			},
+			"23":{
+				"question": "Was sind Zielobjekte des Sicherheitskonzepts?",
+				"answers":{
+					"A": "Alle IT-Systeme einer Institution",
+					"B": "Alle in der Erstaufnahme ermittelten Komponenten",
+					"C": "Ausschließlich die Mitarbeiter auf Ebene der Geschäftsführung",
+					"D": "Die angemieteten Gebäude einer Institution"
+				},
+				"right":["B"]
+			},
+			"24":{
+				"question": "Was sind geeignete technische und organisatorische Maßnahmen in einem Sicherheitskonzept?",
+				"answers":{
+					"A": "Maßnahmen zur physischen Absicherung von Gebäuden und Räumlichkeiten",
+					"B": "ausreichende Datensicherungsverfahren",
+					"C": "Verfahren zur Messung der Mitarbeiterzufriedenheit",
+					"D": "Sicherstellen der pünktlichen Zahlung von Abgaben und Gehältern"
+				},
+				"right":["A","B"]
+			},
+			"25":{
+				"question":"Was sind geeignete Auswahlkriterien für Sicherheitsmaßnahmen?",
+				"answers":{
+					"A": "Empfehlung der Geschäftsführung",
+					"B": "Auswirkungen auf das Sicherheitsniveau",
+					"C": "Kosten-Nutzen-Aspekte",
+					"D": "Praxistauglichkeit"
+				},
+				"right":["B","C","D"]
+			},
+			"26":{
+				"question": "Welche Ziele verfolgt die Strukturanalyse im Rahmen der IT-Grundschutz-Methodik?",
+				"answers":{
+					"A": "die Identifizierung der Objekte, die besonders stark gefährdet sind",
+					"B": "die Ermittlung der Objekte, die in einem Sicherheitskonzept zu berücksichtigen sind",
+					"C": "die angemessene Zusammenfassung von Objekten, für die gleiche Sicherheitsmaßnahmen angewendet werden können",
+					"D": "die Ermittlung der Objekte, für die es passende Bausteine im IT-Grundschutz-Kompendium gibt"
+				},
+				"right":["B","C"]
+			},
+			"27":{
+				"question": "Welche Informationen sollten Netzpläne enthalten, die für die Strukturanalyse benötigt werden?",
+				"answers":{
+					"A": "die bei der Erarbeitung des Sicherheitskonzepts beteiligten Organisationseinheiten",
+					"B": "die Art der Vernetzung der IT-Systeme eines Informationsverbundes",
+					"C": "die Außenverbindungen des Netzes eines Informationsverbundes",
+					"D": "die Art der IT-Systeme eines Informationsverbundes"
+				},
+				"right":["B","C","D"]
+			},
+			"28":{
+				"question": "Wann bietet es sich an, IT-Systeme bei der Strukturanalyse zu gruppieren?",
+				"answers":{
+					"A": "wenn diese den gleichen Schutzbedarf und ähnliche Eigenschaften (Betriebssystem, Netzanbindung, unterstützte Anwendungen) haben",
+					"B": "wenn es für diese Systeme eigene und geeignete Bausteine im IT-Grundschutz-Kompendium gibt",
+					"C": "wenn diese in denselben Räumlichkeiten untergebracht sind",
+					"D": "wenn die Anzahl der insgesamt erfassten Objekte zu groß zu werden droht"
+				},
+				"right":["A"]
+			},
+			"29":{
+				"question": "Welche der folgenden Aufgaben gehören gemäß BSI-Standard 200-2 zur Strukturanalyse?",
+				"answers":{
+					"A": "die angemessene Gruppierung der Komponenten eines Informationsverbundes",
+					"B": "die Modellierung der Geschäftsprozesse und Fachaufgaben eines Informationsverbundes",
+					"C": "die Überprüfung, ob die eingesetzte IT die Geschäftsprozesse und Fachaufgaben angemessen unterstützt",
+					"D": "die Erhebung der Informationen, Geschäftsprozesse, Anwendungen, IT-Systeme, Kommunikationsverbindungen und räumlichen Gegebenheiten eines Informationsverbundes"
+				},
+				"right":["A","D"]
+			},
+			"30":{
+				"question": "Welche Angaben sind für IT-Systeme bei der Strukturanalyse zu erfassen?",
+				"answers":{
+					"A": "Typ und Einsatzzweck",
+					"B": "Lieferant und Preis",
+					"C": "Benutzer und Administrator",
+					"D": "Standort (Gebäude und Raum) "
+				},
+				"right":["A","C","D"]
+			},
+			"31":{
+				"question": "Welche Anwendungen sind in der Strukturanalyse zu erfassen?",
+				"answers":{
+					"A": "alle Anwendungen, die auf den IT-Systemen im Informationsverbund installiert sind",
+					"B": "alle Anwendungen, die für mindestens einen der bereits erfassten Geschäftsprozesse erforderlich sind",
+					"C": "alle Anwendungen, für die eine gültige Lizenz vorhanden ist",
+					"D": "alle Anwendungen, die von mindestens 20 Prozent der Mitarbeiter genutzt werden"
+				},
+				"right":["B"]
+			},
+			"32":{
+				"question": "Welche klassischen Schutzziele werden bei der Schutzbedarfsfeststellung gemäß IT-Grundschutz empfohlen?",
+				"answers":{
+					"A": "Authentizität",
+					"B": "Verfügbarkeit",
+					"C": "Vertraulichkeit",
+					"D": "Integrität"
+				},
+				"right":["B","C","D"]
+			},
+			"33":{
+				"question": "In welchen Fällen können Sie gemäß IT-Grundschutz-Methodik auf die Schutzbedarfsfeststellung für ein IT-System verzichten?",
+				"answers":{
+					"A": "wenn das IT-System spätestens innerhalb von 18 Monaten ausgesondert wird",
+					"B": "wenn das IT-System nicht eingesetzt wird",
+					"C": "wenn die Anwendungen, die es unterstützt, nur einen normalen Schutzbedarf haben",
+					"D": "wenn der Schutzbedarf bereits im Rahmen einer vor einem Jahr durchgeführten Revision festgestellt wurde"
+				},
+				"right":["B"]
+			},
+			"34":{
+				"question": "Welche Kriterien berücksichtigen Sie bei der Bestimmung des Bedarfs an Verfügbarkeit eines IT-Systems?",
+				"answers":{
+					"A": "die maximal tolerierbare Ausfallzeit des IT-Systems",
+					"B": "den Aufwand, der erforderlich ist, um das IT-System nach einer Beschädigung wiederherzustellen",
+					"C": "die Anzahl der Benutzer des IT-Systems",
+					"D": "die Anschaffungskosten des IT-Systems"
+				},
+				"right":["A"]
+			},
+			"35":{
+				"question": "Was berücksichtigen Sie, wenn Sie den Schutzbedarf einer Anwendung bestimmen?",
+				"answers":{
+					"A": "die Informationen, die im Zusammenhang mit der Anwendung verwendet werden ",
+					"B": "die Bedeutung der Anwendung für die Geschäftsprozesse oder Fachaufgaben ",
+					"C": "die relevanten Gefährdungen, denen die Anwendung ausgesetzt ist",
+					"D": "die räumliche Umgebung des IT-Systems, das die Anwendung bereitstellt"
+				},
+				"right":["A","B"]
+			},
+			"36":{
+				"question": "Unter welchen Bedingungen kann der Schutzbedarf eines IT-Systems bezüglich Verfügbarkeit geringer sein als derjenige der Anwendungen, für die es eingesetzt wird?",
+				"answers":{
+					"A": "wenn der Buchwert des IT-Systems einen zuvor definierten Schwellwert unterschreitet",
+					"B": "wenn das IT-System nur solche Teile der Anwendungen bedient, die einen geringeren Schutzbedarf haben ",
+					"C": "wenn mindestens ein weiteres redundantes IT-System in Betrieb ist, das die betreffenden Anwendungen bereitstellen kann",
+					"D": "wenn die Anwendungen innerhalb der nächsten drei Monate so umstrukturiert werden sollen, dass das betreffende IT-System nicht mehr benötigt wird"
+				},
+				"right":["B","C"]
+			},
+			"37":{
+				"question": "Wenn bei der Schutzbedarfsfeststellung für ein IT-System Kumulationseffekte berücksichtigt werden, bedeutet dies, dass ...",
+				"answers":{
+					"A": "... sich der Schutzbedarf des IT-Systems erhöht, weil sich Einzelschäden zu einem höheren Gesamt­schaden addieren.",
+					"B": "... sich der Schutzbedarf des IT-Systems verringert, weil geeignete, sich gegenseitig verstärkende Sicherheitsmaßnahmen im Einsatz sind.",
+					"C": "... sich der für das IT-System festgestellte Schutzbedarf auch auf den Schutzbedarf anderer IT-Systeme auswirkt, die mit dem betreffenden IT-System vernetzt sind.",
+					"D": "... der Schutzbedarf des IT-Systems erst festgestellt werden kann, wenn der Schutzbedarf der mit diesem vernetzten IT-Systeme festgestellt ist."
+				},
+				"right":["A"]
+			},
+			"38" : {
+				"question" : "Wovon hängt der Schutzbedarf eines Objekts besonders ab?",
+				"answers" :{
+					"A": "vom Schutzbedarf derjenigen Geschäftsprozesse, für deren Bearbeitung es benötigt wird",
+					"B": "vom Schutzbedarf derjenigen Informationen, für deren Bearbeitung es benötigt wird",
+					"C": "vom Schutzbedarf derjenigen Anwendungen, für deren Bearbeitung es benötigt wird",
+					"D": "vom Schutzbedarf derjenigen Räume, für deren Bearbeitung es benötigt wird"
+				},
+				"right":["A","B"]
+			},
+			"39" :{
+				"question": "Was bedeutet das Maximumprinzip im Zusammenhang mit der Schutzbedarffeststelltung?",
+				"answers":{
+					"A" : "Das ein maximaler Schutz für einen Informationsverbund anzustreben ist",
+					"B" : "Das die Schutzmaßnahmen maximal 20% des Jahresumsatz kosten dürfen",
+					"C" : "Das sich in vielen Fällen der höchste Schutzbedarf aller Anwendungen auf einem IT-System, als Schutzberdarf für das IT-System übernehmen lässt",
+					"D" : "Das nur die maximal wirksamen Bausteine aus dem Grundschutzkompendium angewandt werden"
+				},
+				"right":["C"]
+			},
+			"40" : {
+				"question" : "Wenn bei der Schutzbedarfsfeststellung für ein IT-System Verteilungseffekte berücksichtigt werden, bedeutet dies, dass ...",
+				"answers" :  {
+						"A" : "... sich der Schutzbedarf des IT-Systems erhöht, weil sich Einzelschäden zu einem höheren Gesamt­schaden verteilen.",
+						"B" : "... sich der Schutzbedarf des IT-Systems verringert, weil geeignete, sich gegenseitig verstärkende Sicherheitsmaßnahmen im Einsatz sind.",
+						"C" : "... sich der Schutzbedarf des IT-Systems verringert, wenn eine Anwendung mit hohem Schutzbedarf auf mehrere Systeme verteilt ist.",
+						"D" : "... der Schutzbedarf geringer ist, wenn auf dem betreffenden IT-System nur weniger wichtige Teile dieser Anwendung ausgeführt werden."
+					},
+					"right" : ["C","D"]
+				},
+			"41":{
+				"question": "Wer sollte bei der Abschätzung eines möglichen Schadens mit einbezogen werden?",
+				"answers" :{
+					"A": "das Management, da sie letztlich die Verantwortung trägt und so bei Unstimmigkeiten entscheiden muss.",
+					"B": "die Anwender, um aus ihrer Sicht realistische Schadensszenarien zu entwickeln.",
+					"C": "die Verantwortlichen und die Benutzer der Anwendung,",
+					"D": "die Auditoren für das angestrebte ISO 27001 - Zertifkat."
+				},
+				"right":["A","B","C"]
+			},
+			"42":{
+				"question": "Was ist bei der Schutzbedarfsfeststellungen besonders zu berücksichtigen?",
+				"answers":{
+					"A": "die Schutzbedarfsfeststellungen ausführlich zu begründen, so das die Entscheidung später nachvollzogen werden kann",
+					"B": "das sich Schutzbedarfsfeststellung keinesfalls im Prozess verändern dürfen",
+					"C": "das nur die Geschäftsführung zu Schutzbedarfsfeststellung berechtigt ist",
+					"D": "das Schutzbedarfsfeststellungen dem Standard gemäß ISO 27003 entsprechend dokumentiert werden"
+				},
+				"right":["A"]
+			},
+			"43":{
+				"question": "Welche Aufgaben stellen sich Ihnen bei der Modellierung gemäß IT-Grundschutz?",
+				"answers":{
+					"A": "Sie bilden den in der Strukturanalyse dokumentierten Informationsverbund mithilfe der IT-Grundschutz-Bausteine ab.",
+					"B": "Sie entwerfen die Sicherheitsarchitektur des betrachteten Informationsverbundes.",
+					"C": "Sie merken Zielobjekte, die nicht geeignet modelliert werden können, für eine Risikoanalyse vor.",
+					"D": "Sie prüfen, welche IT-Grundschutz-Bausteine für den betrachteten Informationsverbund relevant sind."
+				},
+				"right":["A","C","D"]
+			},
+			"44":{
+				"question": "Welche Informationen sind Bestandteil eines IT-Grundschutz-Bausteins?",
+				"answers":{
+					"A": "Angaben zur spezifischen Gefährdungslage",
+					"B": "Beschreibungen zu Standard-Sicherheitsmaßnahmen",
+					"C": "Verweise auf weiterführende Informationen",
+					"D": "Sicherheitsanforderungen zu einem gegebenen Sachverhalt"
+				},
+				"right":["A","C","D"]
+			},
+			"45":{
+				"question": "Welche Aufgaben stellen sich Ihnen, nachdem Sie bei der Modellierung festgelegt haben, welche Bausteine für den Informationsverbund und seine einzelnen Zielobjekte anzuwenden sind?",
+				"answers":{
+					"A": "die Festlegung von Maßnahmen, mit denen die Anforderungen erfüllt werden können",
+					"B": "die Prüfung, ob für einzelne Anforderungen, deren Umsetzung im gegebenen Anwendungskontext mit vertretbarem Aufwand nicht möglich ist, Alternativen erforderlich sind",
+					"C": "die Korrektur der Schutzbedarfsfeststellung für Zielobjekte, bei denen die Erfüllung der Anforderungen unrealistisch erscheint",
+					"D": "die Dokumentation der Ergebnisse der Modellierung"
+				},
+				"right":["A","B","D"]
+			},
+			"46":{
+				"question": "Worauf sollten Sie bei der Auswahl und Anpassung der Sicherheitsmaßnahmen auf Basis der Anforderungen achten?",
+				"answers":{
+					"A": "auf die Wirtschaftlichkeit der Maßnahmen",
+					"B": "auf die Wirksamkeit der Maßnahmen",
+					"C": "auf den Innovationsgrad der Maßnahmen",
+					"D": "auf die Benutzerfreundlichkeit der Maßnahmen"
+				},
+				"right":["A","B","D"]
+			},
+			"47":{
+				"question": "Welche Aussagen zur Anwendung von Bausteinen auf Server sind korrekt?",
+				"answers":{
+					"A": "Der Baustein SYS.1.1 Allgemeiner Server ist nur dann anzuwenden, wenn es keinen betriebssystemspezifischen Baustein für einen Server gibt.",
+					"B": "Neben dem Baustein SYS.1.1 Allgemeiner Server ist immer auch der zutreffende betriebssystemspezifische Baustein anzuwenden.",
+					"C": "Wenn es spezielle Bausteine für Server-Anwendungen (z. B. Web- oder Datenbankserver) gibt, muss der betriebssystemspezifische Baustein nicht angewendet werden.",
+					"D": "Für Virtualisierungsserver müssen neben dem Baustein sowohl der Baustein SYS.1.1 Allgemeiner Server als auch der zutreffende betriebssystemspezifische Baustein angewendet werden."
+				},
+				"right":["B","D"]
+			},
+			"48":{
+				"question": "Auf welche Zielobjekte ist bei der Modellierung der Baustein ISMS.1 Sicherheitsmanagement anzuwenden?",
+				"answers":{
+					"A": "Er MUSS gesondert auf jeden größeren Standort eines Informationsverbundes angewendet werden.",
+					"B": "Er MUSS einmal angewendet werden, und zwar auf den gesamten Informationsverbund.",
+					"C": "Er ist nur relevant, wenn der Informationsverbund eine gewisse Mindestgröße hat.",
+					"D": "Er MUSS für jedes Teilnetz gesondert angewendet werden, das bei der Strukturanalyse identifiziert wurde."
+				},
+				"right":["B"]
+			},
+			"49":{
+				"question": "Welche Aussagen zum IT-Grundschutz-Check sind zutreffend?",
+				"answers":{
+					"A": "Ein IT-Grundschutz-Check ermöglicht, Defizite bei der Erfüllung von Sicherheitsanforderungen zu ermitteln.",
+					"B": "Bei einem IT-Grundschutz-Check wird lediglich die Erfüllung der Basis-Anforderungen geprüft.",
+					"C": "Ein IT-Grundschutz-Check dient dazu, Sicherheitsprobleme zu identifizieren, die in einer Risikoanalyse genauer untersucht werden müssen.",
+					"D": "Ein IT-Grundschutz-Check ist ein Soll-Ist-Vergleich zwischen Sicherheitsanforderungen und tatsächlich umgesetzten Sicherheitsmaßnahmen."
+				},
+				"right":["A","D"]
+			},
+			"50":{
+				"question": "Welche Vorarbeiten erfordert der IT-Grundschutz-Check?",
+				"answers":{
+					"A": "die Festlegung eines Zeitplans",
+					"B": "die Auswahl von geeigneten Gesprächspartnern",
+					"C": "einen Penetrationstest, um Schwachstellen zu identifizieren, die mit den ausgewählten Gesprächspartnern erörtert werden",
+					"D": "die Zusammenstellung und Lektüre der vorhandenen Dokumente zur Informationssicherheit in dem betrachteten Informationsverbund"
+				},
+				"right":["A","B","D"]
+			},
+			"51":{
+				"question": "Welche Verfahren verwenden Sie, um in einem IT-Grundschutz-Check zu prüfen, wie gut eine Gruppe von Clients geschützt ist?",
+				"answers":{
+					"A": "Sie führen Interviews mit den zuständigen Systembetreuern.",
+					"B": "Sie versuchen in einem Penetrationstest, Schwachstellen dieser IT-Systeme zu ermitteln, und beziehen dabei sämtliche zur Gruppe gehörenden Clients ein.",
+					"C": "Sie untersuchen stichprobenartig vor Ort, wie die Clients konfiguriert sind.",
+					"D": "Sie lesen die vorhandene Dokumentation zur Konfiguration der Clients."
+				},
+				"right":["A","C","D"]
+			},
+			"52":{
+				"question": "Wann bewerten Sie beim IT-Grundschutz-Check eine Anforderung eines IT-Grundschutz-Bausteins als erfüllt?",
+				"answers":{
+					"A": "wenn zu der Anforderung geeignete Maßnahmen vollständig, wirksam und angemessen umgesetzt sind",
+					"B": "wenn der Gesprächspartner Ihnen glaubhaft versichert hat, dass es bislang zu keinen Sicherheitsproblemen auf dem betreffenden IT-System gekommen ist",
+					"C": "wenn es eine umfangreiche Dokumentation zu den Schutzvorkehrungen für das betreffende IT-System gibt",
+					"D": "wenn sowohl im Interview mit einem für das IT-System Zuständigen als auch bei einer stichprobenartigen Überprüfung keine Sicherheitsmängel festgestellt wurden"
+				},
+				"right":["A","D"]
+			},
+			"53":{
+				"question": "Wie verfahren Sie beim ersten IT-Grundschutz-Check, also vor der Durchführung von Risikoanalysen, mit Anforderungen für den erhöhten Schutzbedarf?",
+				"answers":{
+					"A": "Sie stufen diese Anforderungen grundsätzlich als entbehrlich ein und verzichten auch dann darauf, diese zu überprüfen, wenn sie in Ihrer Einrichtung umgesetzt sind.",
+					"B": "Sie streichen die Anforderungen aus Ihrem Sollkonzept.",
+					"C": "Sie betrachten Anforderungen für den hohen und sehr hohen Schutzbedarf erst nach Abschluss der Risikoanalyse.",
+					"D": "Sie betrachten im IT-Grundschutz-Check grundsätzlich alle in den IT-Grundschutz-Bausteinen genannten Anforderungen, folglich auch diejenigen für den erhöhten Schutzbedarf."
+				},
+				"right":["C"]
+			},
+			"54":{
+				"question": "Sie stellen fest, dass eine Standard-Anforderung für ein IT-System nicht umgesetzt ist, das nur noch kurze Zeit in Betrieb ist. Wie behandeln Sie diese Anforderung beim IT-Grundschutz-Check?",
+				"answers":{
+					"A": "Sie streichen die Anforderung aus dem IT-Grundschutz-Modell.",
+					"B": "Sie dokumentieren diese als entbehrlich, da ihre Umsetzung nicht mehr wirtschaftlich ist.",
+					"C": "Sie dokumentieren diese als nicht erfüllt, und merken gegebenenfalls an, dass geprüft werden muss, ob Maßnahmen zur Behebung dieses Defizits angesichts der kurzen Einsatzzeit des IT-Systems noch angemessen sind.",
+					"D": "Sie dokumentieren diese als nicht erfüllt und merken an, dass geprüft werden muss, ob die daraus resultierenden Risiken in der Restlaufzeit des IT-Systems noch tragbar sind."
+				},
+				"right":["C","D"]
+			},
+			"55":{
+				"question": "Wer trägt die Verantwortung für die bei einer Risikoanalyse getroffenen Entscheidungen zu einem IT-System?",
+				"answers":{
+					"A": "der Administrator des IT-Systems",
+					"B": "die Leitung der Institution ",
+					"C": "der Informationssicherheitsbeauftragte",
+					"D": "das IS-Management-Team"
+				},
+				"right":["B"]
+			},
+			"56":{
+				"question": "Welche Gefährdungen werden bei der Erstellung der Gefährdungsübersicht im ersten Schritt betrachtet?",
+				"answers":{
+					"A": "die im Anhang von BSI-Standard 200-3 enthaltenen Risikokataloge",
+					"B": "die relevanten elementaren Gefährdungen aus dem IT-Grundschutz-Kompendium",
+					"C": "die im Anhang der Norm ISO 27005 angeführten Gefährdungen",
+					"D": "die in den Abschnitten zur Gefährdungslage eines Bausteins angeführten spezifischen Gefährdungen"
+				},
+				"right":["B"]
+			},
+			"57":{
+				"question": "Was bewerten Sie bei der Risikoeinschätzung?",
+				"answers":{
+					"A": "die Häufigkeit des Eintretens einer Gefährdung",
+					"B": "das mit einer Gefährdung verbundene Schadensausmaß",
+					"C": "welche Schutzziele von einer Gefährdung betroffen sind",
+					"D": "die Wirksamkeit der geplanten und umgesetzten Maßnahmen gegen eine Gefährdung"
+				},
+				"right":["A","B"]
+			},
+			"58":{
+				"question": "Wodurch verlagern Sie ein Risiko?",
+				"answers":{
+					"A": "durch den Abschluss einer Versicherung",
+					"B": "durch Outsourcing des risikobehafteten Geschäftsprozesses an einen externen Dienstleister",
+					"C": "durch Umstrukturierung des risikobehafteten Geschäftsprozesses",
+					"D": "durch die Entscheidung, risikomindernde Maßnahmen erst dann umzusetzen, wenn die hierzu erforderlichen Finanzmittel bereitstehen"
+				},
+				"right":["A","B"]
+			},
+			"59":{
+				"question": "Aus welchen Gründen kann es gerechtfertigt sein, auch ein hohes Risiko zu akzeptieren?",
+				"answers":{
+					"A": "Der Aufwand für mögliche Schutzmaßnahmen ist unangemessen hoch. ",
+					"B": "Vergleichbare Institutionen akzeptieren das Risiko ebenfalls.",
+					"C": "Es gibt keine wirksamen Schutzmaßnahmen gegen das Risiko.",
+					"D": "Es ist bislang noch zu keinem nennenswerten Sicherheitsvorfall aufgrund der dem Risiko zugrunde liegenden Gefährdung gekommen."
+				},
+				"right":["A","C"]
+			},
+			"60":{
+				"question": "Wann ist die Risikoakzeptanz grundsätzlich unzulässig?",
+				"answers":{
+					"A": "bei der Nichterfüllung von Basis-Anforderungen",
+					"B": "beim Vorhandensein von elementaren Gefährdungen",
+					"C": "bei sehr hohem Schutzbedarf",
+					"D": "bei Nichterfüllung von Standard-Anforderungen"
+				},
+				"right":["A"]
+			},
+			"61":{
+				"question":"In welchen Fällen besteht ein zusätzlicher Risiko-Analysebedarf?",
+				"answers":{
+					"A":"ein Zielobjekt hat einen hohen oder sehr hohen Schutzbedarf",
+					"B":"es gibt eine aktualisierte Auflage des IT-Grundschutz-Kompendium",
+					"C":"es gibt für ein Zielobjekt keinen hinreichend passenden Baustein im IT-Grundschutz-Kompendium",
+					"D":"die Einsatzumgebung des Zielobjekts ist untypisch für den IT-Grundschutz"
+				},
+				"right":["A","C","D"]
+			},
+			"62":{
+				"question" : "Was sind geeignete Methoden zur Risikoanalyse?",
+				"answers" : { 
+						"A" : "BSI-Standard 200-1 Risikoanalyse auf der Basis von IT-Grundschutz",
+						"B" : "BSI-Standard 200-2 Risikoanalyse auf der Basis von IT-Grundschutz",
+						"C" : "BSI-Standard 200-3 Risikoanalyse auf der Basis von IT-Grundschutz",
+						"D" : "Schätzen mit Beratung durch den Hersteller oder unabhängige Sicherheitsberater" 
+					},
+				"right" : ["C","D"]
+			},
+			"63" : {
+				"question" : "Unter welchen Voraussetzungen ist ein zweiter IT-Grundschutz-Check notwendig?",
+				"answers" : { 
+						"A" : "wenn dies der Auditor dies für die Vergabe des IT-Grundschutz Zertifikats verlangt",
+						"B" : "immer regelmäßig im Zyklus von 3 Jahren",
+						"C" : "wenn sich durch die Risikoanalyse das Sicherheitskonzept geändert hat",
+						"D" : "wenn der Umsetzungsstatus neu hinzugekommener oder geänderter Maßnahmen zu prüfen ist" 
+					},
+				"right" : ["C","D"]
+			},
+			"64":{
+				"question": "Was müssen Sie prüfen, wenn Sie die Umsetzung von Sicherheitsmaßnahmen planen?",
+				"answers":{
+					"A": "welche begleitenden Maßnahmen für eine erfolgreiche Umsetzung erforderlich sind",
+					"B": "ob die betreffende Maßnahme bereits eingeführt ist",
+					"C": "ob die Maßnahme mit anderen Maßnahmen vereinbar ist ",
+					"D": "in welcher Reihenfolge die verschiedenen Maßnahmen umgesetzt werden sollen"
+				},
+				"right":["A","C","D"]
+			},
+			"65":{
+				"question": "Welche Informationen aus dem IT-Grundschutz-Kompendium unterstützen Sie bei der Festlegung einer sinnvollen Umsetzungsreihenfolge der geplanten Maßnahmen?",
+				"answers":{
+					"A": "die fünfstufige Kennziffer zur Angabe der Priorität einer Anforderung in den IT-Grundschutz-Bausteinen",
+					"B": "die Aufteilung der Anforderungen in Basis- und Standard-Anforderungen sowie solchen für den höheren Schutzbedarf",
+					"C": "der Vorschlag zur Kennzeichnung einer sinnvollen Bearbeitungsreihenfolge der Bausteine mithilfe der Kürzel R1, R2 und R3",
+					"D": "die Darstellung der Gefährdungslage am Beginn eines Bausteins"
+				},
+				"right":["B","C"]
+			},
+			"66":{
+				"question": "Was unternehmen Sie als Informationssicherheitsbeauftragter, wenn die Leitung Ihrer Institution nicht bereit ist, den Aufwand für eine bestimmte Sicherheitsmaßnahme zu tragen?",
+				"answers":{
+					"A": "Sie verdeutlichen ihr, welche Risiken mit dem Fehlen der Maßnahme verbunden sind.",
+					"B": "Sie bitten die Leitung, durch Unterschrift zu bestätigen, dass sie die damit verbundenen Gefahren kennt und trägt.",
+					"C": "Sie ignorieren die Leitung und setzen die Maßnahme trotzdem um.",
+					"D": "Sie verzichten auf eine unmittelbare Reaktion, nehmen sich aber vor, nach Ablauf einer gewissen Zeitspanne die Zustimmung der Leitung einzuholen."
+				},
+				"right":["A","B"]
+			},
+			"67":{
+				"question": "Wer sollte in der Regel technische Maßnahmen zur Absicherung eines bestimmten IT-Systems umsetzen?",
+				"answers":{
+					"A": "die Leitung der IT-Abteilung",
+					"B": "der Informationssicherheitsbeauftragte",
+					"C": "der zuständige Systemadministrator",
+					"D": "der Benutzer des IT-Systems"
+				},
+				"right":["C"]
+			},
+			"68":{
+				"question": "Wer sollte üblicherweise prüfen, ob eine Sicherheitsmaßnahme wie geplant umgesetzt ist?",
+				"answers":{
+					"A": "die Geschäftsführung",
+					"B": "der Informationssicherheitsbeauftragte",
+					"C": "der zuständige IT-Administrator",
+					"D": "die Leitung der IT-Abteilung"
+				},
+				"right":["B"]
+			},
+			"69":{
+				"question": "Welches Hilfsmittel im IT-Grundschutz-Kompendium können Sie verwenden, um Ihrer Leitung zu verdeutlichen, welche Risiken die Nichterfüllung von Anforderungen mit sich bringt?",
+				"answers":{
+					"A": "das Restrisikodeklarationsformular im Anhang des Kompendiums",
+					"B": "die Kreuzreferenztabellen am Ende eines Bausteins",
+					"C": "das Risikokalkulationsschema in der Übersicht der elementaren Gefährdungen",
+					"D": "die Beispiele für eine erfolgreiche Sensibilisierung im Baustein ORP.3 Sensibilisierung und Schulung"
+				},
+				"right":["B"]
+			},
+			"70":{
+				"question":"Was sind sinnvolle Schritte um Maßnahmen zu konsolidieren?",
+				"answers":{
+					"A":"Ergebnissen des IT-Grundschutz-Checks und eventuell durchgeführter Risikoanalysen filtern",
+					"B":"Unzureichend erfüllten Anforderungen nach den betroffenen Zielobjekten gruppieren",
+					"C":"Einen Termin für den Rechenschaftsbericht der Bereichsverantwortlichen koordinieren",
+					"D":"Maßnahmen festlegen, mit denen Sie die verbleibenden Sicherheitslücken schließen können"
+				},
+				"right":["A","B","D"]
+			},
+			"71":{
+				"question":"Was sind Handlungsoptionen, wenn die bewilligten Finanzmittel nicht für die sofortige Umsetzung sämtlicher Maßnahmen ausreichen?",
+				"answers":{
+					"A":"Informationssicherheit muss die höchste Priorität für ein Unternehmen haben, daher müssen die Geschäftführer durch ihr Privatvermögen die Mittel bereitstellen",
+					"B":"Das Budget muss aufgestockt werden",
+					"C":"Über die KfW können Mittel aus dem nationalen Fonds für Cybersicherheit beantragt werden",
+					"D":"Die Restrisiken müssen getragen werden"
+				},
+				"right":["B","D"]
+			},
+			"72":{
+				"question": "Warum sollten Sie Ihr Sicherheitskonzept regelmäßig überprüfen?",
+				"answers":{
+					"A": "weil sich die Gefährdungslage ändert",
+					"B": "weil sich die Prozesse und Strukturen einer Institution ändern",
+					"C": "weil sich die Zielsetzungen und Prioritäten einer Institution ändern ",
+					"D": "weil die IT-Sicherheitsbranche ständig neuen Trends unterliegt"
+				},
+				"right":["A","B","C"]
+			},
+			"73":{
+				"question": "Welche Kriterien sollten Sie bei der Überprüfung Ihres Sicherheitskonzepts berücksichtigen?",
+				"answers":{
+					"A": "die Aktualität des Sicherheitskonzepts",
+					"B": "den Umfang des Sicherheitskonzepts",
+					"C": "die Akzeptanz des Sicherheitskonzepts bei der Leitung der Institution",
+					"D": "die Vollständigkeit des Sicherheitskonzepts"
+				},
+				"right":["A","D"]
+			},
+			"74":{
+				"question": "Welche Vorteile bieten Reifegradmodelle für die Bewertung eines ISMS?",
+				"answers":{
+					"A": "Mit einem Reifegradmodell können der Grad der Strukturiertheit und das Maß der systematischen Steuerung eines Prozesses bewertet werden.",
+					"B": "Die Anwendung eines Reifegradmodells ist Voraussetzung für den Erwerb eines IT-Grundschutz-Zertifikats.",
+					"C": "Ein Reifegradmodell kann auf Teilaspekte des ISMS angewendet werden und Defizite bei einzelnen Prozessen abbilden.",
+					"D": "Durch Anwendung eines Reifegradmodells wird eine zentrale Forderung der Norm ISO 27001 erfüllt."
+				},
+				"right":["A","C"]
+			},
+			"75":{
+				"question": "Welche Voraussetzungen müssen für den Erwerb eines ISO 27001-Zertifikats auf der Basis von IT-Grundschutz erfüllt sein?",
+				"answers":{
+					"A": "ausschließlich die in einem Audit nachgewiesene Erfüllung der Basis-Anforderungen",
+					"B": "die durch Sichtung von Dokumenten und Vor-Ort-Prüfungen begründete Feststellung der erfolgreichen Erfüllung der IT-Grundschutz-Anforderungen durch einen zertifizierten Auditor",
+					"C": "ein positives Resultat bei der Überprüfung des Audit-Berichts durch das BSI",
+					"D": "die Unterschrift eines zertifizierten Auditors unter die Selbsterklärung einer Institution, dass sie die IT-Grundschutz-Anforderungen umfassend erfüllt hat"
+				},
+				"right":["B","C"]
+			},
+			"76":{
+				"question": "Welche der folgenden Untersuchungen haben die systematische Überprüfung der Informationssicherheit in einer Institution zum Ziel?",
+				"answers":{
+					"A": "die Auswertung von IT-Sicherheitsvorfällen",
+					"B": "Penetrationstests",
+					"C": "die IT-Sicherheitsrevision",
+					"D": "ein Audit im Rahmen einer ISO 27001-Zertifizierung auf der Basis von IT-Grundschutz"
+				},
+				"right":["C","D"]
+			},
+			"77":{
+				"question": "Was sollte vor der Einführung einer Kennzahl zur Informationssicherheit unbedingt festgelegt werden?",
+				"answers":{
+					"A": "welches Ziel mit der Kennzahl verfolgt werden soll",
+					"B": "mit welchen Stilmitteln positive und negative Ergebnisse gekennzeichnet werden sollen",
+					"C": "mit welchem Verfahren die Werte eine Kennzahl erhoben werden",
+					"D": "wie die Ergebnisse vor der Leitung der Institution verborgen werden können"
+				},
+				"right":["A","C"]
+			},
+			"78" : {
+				"question" :  "Welche Aufgaben fallen in den Arbeitsbereich des Notfallbeauftragten?",
+				"answers" :  {
+					"A" : "die Koordination der Anfertigung der Sicherheitsleitlinie",
+					"B" : "die Umsetzung von Maßnahmen zur Notfallprävention",
+					"C" : "die Überwachung der Einrichtungen zur frühzeitigen Erkennen von Notfällen (z. B. Alarmanlagen)",
+					"D" : "die Koordination der Entwicklung des Notfallvorsorgekonzepts"
+				},
+				"right" : ["A","D"]
+			},
+			"79" : {
+				"question" :  "Welche Aussagen zur Erhebung der Ressourcen im Rahmen einer Business Impact Analyse sind zutreffend?",
+				"answers" :  {
+					"A" : "Wenn Sie die Ressourcen zusammen mit der Schadensanalyse erheben, können Sie beides in einem einzigen Gespräch erledigen.",
+					"B" : "Wenn Sie die Ressourcen erst nach der Schadensanalyse erheben, können Sie sich auf die kritischen Prozesse beschränken.",
+					"C" : "Wenn Sie die Ressourcen vor der Schadensanalyse erheben, erübrigt sich in vielen Fällen eine gesonderte Schadensanalyse.",
+					"D" : "Nur dann, wenn Sie zuvor erhoben haben, welche Ressourcen ein Geschäftsprozess benötigt, können Sie den möglichen Schaden einer Unterbrechung exakt analysieren."
+				},
+				"right" : ["A","B"]
+			},
+			"80" : {
+				"question" :  "Mit welchen Kenngrößen beschreiben Sie Anforderungen an den Wiederanlauf eines Geschäftsprozesses?",
+				"answers" :  {
+					"A" : "maximal tolerierbare Ausfallzeit",
+					"B" : "Wiederanlaufzeit",
+					"C" : "maximale Anzahl an Wiederanlaufversuchen",
+					"D" : "Wiederanlauf-Niveau"
+				},
+				"right" : ["A","B","D"]
+			},
+			"81" : {
+				"question":"Welche Vorgehensweisen erhöhen die Qualität und Effizienz einer Business Impact Analyse?",
+				"answers":{
+					"A": "Ein allgemeiner Fragebogen zur Erhebung von generellen Informationen",
+					"B": "Gezielten Interviews mit kompetenten Vertretern",
+					"C": "Einführende Workshops mit den Beteiligten zum Sinn des Notfallmanagement",
+					"D": "Zusicherung der Unterstützung durch das Management einholen"
+				},
+				"right":["A","B","C","D"]
+			},
+			"82" : {
+				"question":"Welche Aussagen zu Prozessen im Rahmen einer Business Impact Analyse sind richtig?",
+				"answers":{
+					"A":"In einer Business Impact Analyse muss man Hauptprozesse und Begleitprozesse unterscheiden",
+					"B":"In einer Business Impact Analyse muss man Kernprozesse und Hilfsprozesse unterscheiden",
+					"C":"Unterstützende Prozesse können auch zu den hochgradig kritischen Prozessen einer Einrichtung gehören",
+					"D":"Als Faustregel empfiehlt der BSI-Standard 100-4, zwischen 5 - 15 Prozesse pro Organisationseinheit zu betrachten"
+				},
+				"right":["B","C","D"]
+			},
+			"83" : {
+				"question":"Welche Anforderungen der ISO/IEC 27001 müssen erfüllt werden?",
+				"answers":{
+					"A":"Es müssen alle Anforderungen der ISO/IEC 27001 erfüllt werden.",
+					"B":"Es sollten die meisten Anforderungen der ISO/IEC 27001 erfüllt werden.",
+					"C":"Nur die Anforderungen der ISO/IEC 27001 bezüglich der Informationssicherheitspolitik.",
+					"D":"Nur die Anforderungen der ISO/IEC 27000 müssen erfüllt werden."
+				},
+				"right":["A"]
+			},
+			"84" : {
+				"question":"Der Abschnitt \"Bewertung der Leistung\" entspricht im PCDA-Zyklus der Phase ...",
+				"answers":{
+					"A":"...PLAN.",
+					"B":"...DO.",
+					"C":"...CHECK.",
+					"D":"...ACT."
+				},
+				"right":["C"]
+			},
+			"85" : {
+				"question":"Die Verteilung der Rollen, Verantwortlichkeiten und Befugnisse in der Organisation in Bezug auf ISMS ...",
+				"answers":{
+					"A":"... wird von der ISO/IEC 27001 genau vorgegeben.",
+					"B":"... erfolgt in Anbetracht der erforderlichen Fachkenntnisse und Sozialkompetenzen.",
+					"C":"... wird von der obersten Leitung vorgenommen.",
+					"D":"... muss veröffentlicht werden."
+				},
+				"right":["B","C"]
+			},
+			"86" : {
+				"question":"In welchen Zeitabständen müssen Organisationen gemäß ISO/IEC 27001 interne Audits durchführen?",
+				"answers":{
+					"A":"Jährlich",
+					"B":"Alle zwei Jahre.",
+					"C":"In den, jeweils von der Geschäftsführung geplanten Abständen.",
+					"D":"Alle drei Jahre."
+				},
+				"right":["A"]
+			},
+			"87" : {
+				"question":"Was sind die Aufgaben innerhalb des ISM-Teams?",
+				"answers":{
+					"A":"Erstellung eines Sicherheitskonzeptes.",
+					"B":"Zertifizierung eines Sicherheitsprozesses.",
+					"C":"Bestimmung der Informationssicherheitsziele und -strategien.",
+					"D":"Konzeption von Schulungs- und Sensibilisierungsprogrammen."
+				},
+				"right":["A","C","D"]
+			},
+			"88" : {
+				"question":"Im Rahmen einer Informationssicherheitsrisikobeurteilung müssen die Risiken ...",
+				"answers":{
+					"A":"... analysiert werden.",
+					"B":"... identifiziert werden.",
+					"C":"... bewertet werden.",
+					"D":"... auditiert werden."
+				},
+				"right":["A","B","C"]
+			},
+			"89" : {
+				"question":"Was spielt bei der Festlegung des Anwendungsbereiches eines ISMS gemäß ISO/IEC 27001 keine Rolle?",
+				"answers":{
+					"A":"Anzahl der Standorte der Organisation.",
+					"B":"Budget der Organisation.",
+					"C":"Werte der Organisation.",
+					"D":"Anforderungen der interessierten Parteien."
+				},
+				"right":["B"]
+			},
+			"90" : {
+				"question":"Was ist bei der Festlegung des Scope im Sinnes eines ISMS zu beachten?",
+				"answers":{
+					"A":"Ob alle Kern- und Supportprozesse bekannt sind und berücksichtigt werden.",
+					"B":"Wenn sich IT-Hardware in der Cloud befindet, muss der Scope nicht berücksichtigt werden.",
+					"C":"Gesetze und Vorschriften müssen im Scope berücksichtigt werden.",
+					"D":"Es müssen Produkte und Technologien definiert werden."
+				},
+				"right":["A","C"]
+			},
+			"91" : {
+				"question":"Welches der folgenden Regelwerke für Informationssicherheit ist international genormt?",
+				"answers":{
+					"A":"COBIT",
+					"B":"IT-Grundschutz-Standards",
+					"C":"ISO/IEC 27001",
+					"D":"ITIL"
+				},
+				"right":["C"]
+			},
+			"92" : {
+				"question":"Was bedeutet die Abkürzung SoA?",
+				"answers":{
+					"A":"Statement of Application",
+					"B":"Service of Applicability",
+					"C":"Statement of Applicability",
+					"D":"Service of Application"
+				},
+				"right":["C"]
+			},
+			"93" : {
+				"question":"Operative Aufgaben im Umfeld der Informationssicherheit werden umgesetzt vom:",
+				"answers":{
+					"A":"CIO",
+					"B":"CISO",
+					"C":"ISO",
+					"D":"CSO"
+				},
+				"right":["C"]
+			},
+			"94" : {
+				"question":"Ein ISMS ist zertifizierbar nach ...",
+				"answers":{
+					"A":"ISO/IEC 27001",
+					"B":"ISO/IEC 27002",
+					"C":"ISO/IEC 27004",
+					"D":"ISO/IEC 27005"
+				},
+				"right":["A"]
+			},
+			"95" : {
+				"question":"Was sind die grundlegenden Schutzziele der Informationssicherheit?",
+				"answers":{
+					"A":"Vertraulichkeit",
+					"B":"Transparenz",
+					"C":"Verfügbarkeit",
+					"D":"Integrität"
+				},
+				"right":["A","C","D"]
+			},
+			"96" : {
+				"question":"Was versteht man unter Assets/Werte im Sinne eines ISMS?",
+				"answers":{
+					"A":"Vermögen des Unternehmens",
+					"B":"Ausgelagerte Services",
+					"C":"IT-Hardware/IT-Software",
+					"D":"Person/Personengruppe, die relevante Informationen besitzt."
+				},
+				"right":["A","B","C","D"]
+			},
+			"97" : {
+				"question":"Was sind die Unterschiede zwischen Datenschutz und Informationssicherheit?",
+				"answers":{
+					"A":"Die Umsetzung des Datenschutzes unterliegt strengen gesetzlichen Anforderungen.",
+					"B":"Beim Datenschutz können Unternehmen unterschiedliche Ansätze und Konzepte einführen.",
+					"C":"Bei der Informationssicherheit können Unternehmen unterschiedliche Ansätze und Konzepte einführen.",
+					"D":"Die Umsetzung der Informationssicherheit unterliegt strengen gesetzlichen Anforderungen."
+				},
+				"right":["A","C"]
+			},
+			"98" : {
+				"question":"Was ist das Ziel des Informationssicherheitsrisikobehandlungsprozesses?",
+				"answers":{
+					"A":"Bei den Risikoeigentümern eine Genehmigung einzuholen.",
+					"B":"Maßnahmen zur Umsetzung der Optionen festzulegen.",
+					"C":"Dass er im Einklang mit der Informationssicherheitspolitik steht.",
+					"D":"Angemessene Optionen für die Risikobehandlung auszuwählen."
+				},
+				"right":["B","C","D"]
+			},
+			"99" : {
+				"question":"Welche Aufgaben haben üblicherweise Informationssicherheitsbeauftragte?",
+				"answers":{
+					"A":"Die Entwicklung von Sicherheitskonzepten zu koordinieren.",
+					"B":"Die eingesetzte Sicherheitstechnik zu konfigurieren.",
+					"C":"Der Leitungsebene über den Stand der Informationssicherheit zu berichten.",
+					"D":"Presseanfragen zu dem Stand der Informationssicherheit im Unternehmen zu beantworten."
+				},
+				"right":["A","C"]
+			},
+			"100" : {
+				"question":"Wer ist für die Freigabe der Leitlinie zur Informationssicherheit verantwortlich?",
+				"answers":{
+					"A":"das IS-Management-Team",
+					"B":"der ISB",
+					"C":"die Unternehmens- oder Behördenleitung",
+					"D":"die Öffentlichkeitsabteilung eines Unternehmens oder Behörde"
+				},
+				"right":["C"]
+			},
+			"101" : {
+				"question":"Welche wesentlichen Ziele muss ein ISO / eine ISMS-Organisation verfolgen?",
+				"answers":{
+					"A":"Sicherheitsvorfälle aufdecken und angemessen untersuchen.",
+					"B":"Das Management von der Notwendigkeit der Informationssicherheit überzeugen.",
+					"C":"Sensibilisierungs- und Schulungsmaßnahmen initiieren.",
+					"D":"Die Einhaltung von Richtlinien kontrollieren."
+				},
+				"right":["A","C","D"]
+			},
+			"102" : {
+				"question":"Die europäische Datenschutzgrundverordnung (EU-DSGVO) gilt ...",
+				"answers":{
+					"A":"... nicht für die Einrichtung des Gesundheitswesens, da diese einer eigenen Datenschutzgesetzgebung unterworfen ist.",
+					"B":"... für alle öffentlichen Einrichtungen des Bundes, die personenbezogene Daten verarbeiten.",
+					"C":"... für alle nich-öffentlichen Einrichtungen, die personenbezogene Daten verarbeiten.",
+					"D":"... nicht für Kleinunternehmer."
+				},
+				"right":["B","C"]
+			},
+			"103" : {
+				"question":"Die Verantwortung der obersten Leitung gemäß ISO/IEC 27001 umfasst:",
+				"answers":{
+					"A":"Die Bildung eines 5-köpfigen ISM-Teams.",
+					"B":"Die Förderung der fortlaufenden Verbesserung.",
+					"C":"Die Festlegung der Informationssicherheitspolitik.",
+					"D":"Die Bereitstellung der, für das ISMS erforderlichen Ressourcen."
+				},
+				"right":["B","C","D"]
+			},
+			"104" : {
+				"question":"Zu den externen Themen/Faktoren, die den Kontext der Organisation beeinflussen können, gehören:",
+				"answers":{
+					"A":"Gesetze",
+					"B":"Markt",
+					"C":"Unternehmenswerte",
+					"D":"Wissen der Organisation"
+				},
+				"right":["A","B"]
+			},
+			"105" : {
+				"question":"Compliance-Richtlinien dienen ...",
+				"answers":{
+					"A":"... der Festlegung von Informationssicherheitskennzahlen",
+					"B":"... der Umsetzung und Einhaltung regulatorischer, vertraglicher und gesetzlicher Vorgaben.",
+					"C":"... der Software-Steuerung.",
+					"D":"... der Verwaltung von Lieferantenbeziehungen."
+				},
+				"right":["B"]
+			},
+			"106" : {
+				"question":"Warum wird eine Managementbewertung (Management-Review) durchgeführt?",
+				"answers":{
+					"A":"Als Nachweis für die Zertifizierungsstelle zur Einführung des ISMS.",
+					"B":"Die Managementbewertung ist die Grundlage für die Konformitätsbewertung durch einen externen Auditor.",
+					"C":"Um die fortdauernde Eignung, Angemessenheit und Wirksamkeit des ISMS sicherzustellen.",
+					"D":"Um eine einmalige Bewertung der Qualifikationen der obersten LEitung zu dokumentieren."
+				},
+				"right":["C"]
+			},
+			"107" : {
+				"question":"Welche Vorteile kann eine Zertifizierung nach ISO/IEC 27001 bringen?",
+				"answers":{
+					"A":"Erhöhung der Wettbewerbsfähigkeit",
+					"B":"Erhöhung des Haftungsrisikos",
+					"C":"Höhere Rechtssicherheit",
+					"D":"Höheres Risiko für Datensicherheit"
+				},
+				"right":["A","C"]
+			},
+			"108" : {
+				"question":"Welche Aussagen bezüglich des internen Audits gemäß ISO/IEC 27001 sind nicht richtig?",
+				"answers":{
+					"A":"Im internen Audit muss man alle Bereiche des Unternehmens überprüfen.",
+					"B":"Im internen Audit wird die Wirksamkeit des ISMS überprüft.",
+					"C":"Das interne Audit ist alle zwei Jahre durchzuführen.",
+					"D":"Interne Audits dürfen zur Gewährung der Objektivität nur von externem Personal durchgeführt werden."
+				},
+				"right":["A","C","D"]
+			},
+			"109" : {
+				"question":"Was ist unter dem Schutzziel \"Verfügbarkeit\" im Sinne der Informationssicherheit zu verstehen?",
+				"answers":{
+					"A":"Alle Daten stehen jedem zur Verfügung.",
+					"B":"Daten sind für befugte Personen verfügbar und der Zugang zu ihnen kann nach einem physischen oder technischen Zwischenfall rasch wiederhergestellt werden.",
+					"C":"Vor der Erfassung der Daten wird die Verfügbarkeit der benötigten Ressourcen geprüft.",
+					"D":"Die Berechtigung zur Verarbeitung der Daten darf jedem erteilt werden."
+				},
+				"right":["B"]
+			},
+			"110" : {
+				"question":"Welche sind die grundsätzlichen Aufgaben der IT-Sicherheit?",
+				"answers":{
+					"A":"Integrität der IT-Systeme sicherstellen",
+					"B":"Verfügbarkeit der IT-Systeme sicherstellen",
+					"C":"Schutz der Personen",
+					"D":"Vertraulichkeit der Informationen sicherstellen"
+				},
+				"right":["A","B","D"]
+			},
+			"111" : {
+				"question":"Die Informationssicherheitspolitik gemäß der ISO/IEC 27001 ...",
+				"answers":{
+					"A":"... ist Aufgabe des IT-Administrators.",
+					"B":"... wird von der Norm genau vorgegeben.",
+					"C":"... muss nicht als dokumentierte Information vorliegen.",
+					"D":"... ist die Verantwortung der Führung."
+				},
+				"right":["D"]
+			},
+			"112" : {
+				"question":"Wie oft muss eine Risikobeurteilung durchgeführt werden?",
+				"answers":{
+					"A":"Einmal im Jahr.",
+					"B":"In den geplanten Abständen.",
+					"C":"Dreimal im Jahr.",
+					"D":"Nach erheblichen internen Veränderungen."
+				},
+				"right":["B","D"]
+			},
+			"113" : {
+				"question":"Wie muss beim Auftreten einer Nichtkonformität reagiert werden?",
+				"answers":{
+					"A":"Sofortige Durchführung einer Managementbewertung.",
+					"B":"Ursachenforschung einleiten.",
+					"C":"Zunächst die Freigabe des Geschäftsführers abwarten.",
+					"D":"Erforderliche Maßnahmen ergreifen."
+				},
+				"right":["B","D"]
+			},
+			"114" : {
+				"question":"Gefährdung entsteht beim Zusammentreffen von:",
+				"answers":{
+					"A":"Eintrittswahrscheinlichkeit und Wirkungsdauer",
+					"B":"Risiko und Anzahl der Sicherheitsvorfälle",
+					"C":"Bedrohung und Schwachstelle",
+					"D":"Ausfall und Schadenshöhe"
+				},
+				"right":["C"]
+			},
+			"115" : {
+				"question":"Im Rahmen des Business Continuity Managements ...",
+				"answers":{
+					"A":"... werden verschiedene Ereignisse (Incidents) betrachtet, wie z.B. IT-Systemausfall oder Personalausfall.",
+					"B":"... wird hauptsächlich eine Ursachenanalyse durchgeführt.",
+					"C":"... ist das Hauptziel, Maßnahmen festzulegen, die verhindern, dass Notfallsituationen überhaupt entstehen.",
+					"D":"... müssen die festgelegten Maßnahmen zur Aufrechterhaltung der Informationssicherheit in regelmäßigen Abständen überprüft werden."
+				},
+				"right":["A","C"]
+			},
+			"116" : {
+				"question":"Gemäß der ISO/IEC 27001 sollte die Informationssicherheitsrichtlinie (IS-Politik) ...",
+				"answers":{
+					"A":"... veröffentlicht werden.",
+					"B":"... von dem Informationssicherheitsbeauftragten verabschiedet werden.",
+					"C":"... den Beschäftigten und allen maßgeblichen externen Parteien kommuniziert werden.",
+					"D":"... nicht als dokumentiewrte Information verfügbar sein."
+				},
+				"right":["A","C"]
+			},
+			"117" : {
+				"question":"Warum ist die Lenkung dokumentierter Information erforderlich?",
+				"answers":{
+					"A":"Um die Nachvollziehbarkeit von Änderungen der dokumentierten Informationen sicherzustellen.",
+					"B":"Um sicherzustellen, dass keine falschen oder nicht mehr aktuell dokumentierte Informationen verwendet werden.",
+					"C":"Um den Zugriff aller interessierten Personen auf die dokumentierte Information jderzeit sicherzustellen.",
+					"D":"Um die Verfügbarkeit dokumentierter Information sicherzustellen."
+				},
+				"right":["A","B","D"]
+			},
+			"118" : {
+				"question":"Was ist der Unterschied zwischen Bedrohung und Schwachstelle im Bereich Informationssicherheit?",
+				"answers":{
+					"A":"Eine Bedrohung wird durch eine schon vorhandene Schwachstelle zur Gefährdung für ein Objekt.",
+					"B":"Durch eine Schwachstelle wird ein Objekt sehr anfällig für eine Bedrohung.",
+					"C":"Eine Bedrohung ist ein Umstand oder Ereignis, durch den oder das ein Schaden entstehen kann. ",
+					"D":"Eine Bedrohung führt immer zum Schaden."
+				},
+				"right":["A","B","C"]
+			},
+			"119" : {
+				"question":"Welche Norm enthält Umsetzungsempfehlungen zu den Maßnahmen der ISO/IEC 27001?",
+				"answers":{
+					"A":"ISO/IEC 27001a",
+					"B":"ISO/IEC 27002",
+					"C":"ISO/IEC 27006",
+					"D":"ISO/IEC 27007"
+				},
+				"right":["B"]
+			},
+			"120" : {
+				"question":"Welche Schritte sind für den Aufbau eines ISMS gemäß ISO/IEC 27001 erforderlich?",
+				"answers":{
+					"A":"Implementierung eines Risikoprozesses",
+					"B":"Ermittlung von Controls zur Risikobehandlung",
+					"C":"Identifizierung der Geschäftsprozesse",
+					"D":"Kontext der Organisation festlegen"
+				},
+				"right":["A","C","D"]
+			},
+			"121" : {
+				"question":"Eine Risikomatrix ...",
+				"answers":{
+					"A":"... unterteilt die Risiken in beherrschbare und nicht beherrschbare Risiken.",
+					"B":"... ist eine eindimensionale Visualisierung der Risiken.",
+					"C":"... ist eine grafische Darstellung der identifizierten und bewerteten Risiken.",
+					"D":"... kategorisiert die Risiken nach Eintrittshäufigkeit und Schadenshöhe."
+				},
+				"right":["C","D"]
+			},
+			"122" : {
+				"question":"Im Access Management wird der Begriff \"Zutritt\" benutzt. Was bedeutet dieser?",
+				"answers":{
+					"A":"Die Fähigkeit, sich an Systemen anmelden zu können.",
+					"B":"Die Fähigkeit, auf Daten und Informationen zugreifen zu können.",
+					"C":"Die Fähigkeit, als physische Person an datenverarbeitende Anlagen und Speichermedien zu gelangen.",
+					"D":"Keine der genannten Aussagen ist richtig."
+				},
+				"right":["C"]
+			},
+			"123" : {
+				"question":"Was versteht ISO/IEC 27000 unter dem Begriff Vertraulichkeit?",
+				"answers":{
+					"A":"Den Abschluss einer Vetraulichkeitsvereinbarung.",
+					"B":"Die Geheinhaltungsverpflichtung aller Mitarbeiter, die Zugriff auf das ISMS haben.",
+					"C":"Die Vertraulichkeit schützt die Werte im Hinblick auf ihre Richtigkeit und Vollständigkeit.",
+					"D":"Eine Information ist für unautorisierte Personen, Entitäten oder Prozesse nicht zugänglich."
+				},
+				"right":["D"]
+			},
+			"124" : {
+				"question":"Was versteht ISO/IEC 27000 unter dem Begriff Verfügbarkeit?",
+				"answers":{
+					"A":"Die Eigenschaft einer Information oder eines Wertes, für eine berechtigte Person oder Entität zugreifbar und nutzbar zu sein.",
+					"B":"Die Eigenschaft einer informationsverarbeitenden Einrichtung, genügend Ressourcen für eine Aufgabe zur Verfügung zu haben.",
+					"C":"Die Eigenschaft einer Information oder eines Wertes, vor Manipulation geschützt zu sein.",
+					"D":"Die Eigenschaft einer Information oder eines Wertes, vor Offenlegung geschützt zu sein."
+				},
+				"right":["A"]
+			},
+			"125" : {
+				"question":"Was bezeichnet ISO/IEC 27000 mit dem Begriff \"dokumentierte Information\"?",
+				"answers":{
+					"A":"Beschreibung dessen, was als Ergebnis umgesetzter Maßnahmen erzielt werden soll.",
+					"B":"Information, die von einer Organisation gelenkt und aufrechterhalten werden muss, und das Medium, auf dem sie enthalten ist.",
+					"C":"Satz von in Wechselbeziehungen stehenden Mitteln und Tätigkeiten, die Eingaben in Ergebnisse umwandeln.",
+					"D":"Alles, was für eine Organisation von Wert ist."
+				},
+				"right":["B"]
+			},
+			"126" : {
+				"question":"Was versteht man gemäß ISO/IEC 27000 unter einem Prozess?",
+				"answers":{
+					"A":"Eine Maßnahme zur Veränderung eines Risikos.",
+					"B":"Die Ausführung eines Computerprogramms durch eine informationsverarbeitende Einrichtung.",
+					"C":"Ein Satz von zusammenhängenden und sich gegenseitig beeinflussenden Tätigkeiten, der Eingaben in Ergebnisse umwandelt.",
+					"D":"Gerichtsverhandlung"
+				},
+				"right":["C"]
+			},
+			"127" : {
+				"question":"Wobei handelt es sich nicht um einen relevanten Aspekt der Informationssicherheitsrisikobehandlung gemäß ISO/IEC 27001?",
+				"answers":{
+					"A":"Auswahl angemessener Optionen für die Risikobehandlung.",
+					"B":"Erstellung einer Erklärung zur Anwendbarkeit.",
+					"C":"Formulierung eines Plans für die Risikobehandlung.",
+					"D":"Einholen der Genehmigung für die Akzeptanz von Restrisiken bei der Zertifizierungsstelle."
+				},
+				"right":["D"]
+			},
+			"128" : {
+				"question":"Wie definiert ISO/IEC 27000 den Brgiff Risikoanalyse?",
+				"answers":{
+					"A":"Koordinierte Aktivitäten zur Leitung und Kontrolle einer Organisation in Bezug auf Risiken.",
+					"B":"Prozess für die Auswahl von Maßnahmen zur Behandlung identifizierter Risiken.",
+					"C":"Festlegungen, um die Signifikanz eines Risikos zu bewerten.",
+					"D":"Prozess, um die Beschaffenheit eines Risikos zu verstehen und das Risikoniveau zu bestimmen."
+				},
+				"right":["D"]
+			},
+			"129" : {
+				"question":"Welche Arten von Audits sind in der Regel nach ISO/IEC 27000 zu unterscheiden?",
+				"answers":{
+					"A":"Vollständige und unvollständige",
+					"B":"Interne und externe",
+					"C":"Objektive und subjektive",
+					"D":"Angekündigte und unangekündigte"
+				},
+				"right":["B"]
+			},
+			"130" : {
+				"question":"Welche Aufgabe hat ein Risikoeigentümer im Hinblick auf die Informationssicherheitsrisikobehandlung?",
+				"answers":{
+					"A":"Der Risikoeigentümer muss alle Restrisiken identifizieren und beseitigen.",
+					"B":"Der Risikoeigentümer muss den vorgeschlagenen Restrisiken zustimmen.",
+					"C":"Der Risikoeigentümer ist für die Umsetzung des ISMS zuständig.",
+					"D":"Der Risikoeigentümer schreibt die Festlegunden des ISMS in einem Managementplan nieder."
+				},
+				"right":["B"]
+			},
+			"131" : {
+				"question":"Über das Access Management gibt es die Möglichkeit, Sicherheitsbereiche einzurichten. Was ist bei der Erstellung eines Sicherheitsbereiches zu beachten?",
+				"answers":{
+					"A":"Unbeaufsichtigte Tätigkeiten in Sicherheitsbereichen sollten vermieden werden.",
+					"B":"Es müssen Verfahren für die Arbeit in Sicherheitsbereichen ausgearbeitet und angewendet werden.",
+					"C":"Das Mitführen von Foto-, Video- oder Audio-Aufzeichnungsgeräten sollte untersagt werden.",
+					"D":"Sicherheitsbereiche sollten in unterschiedliche Zonen gegliedert und definiert werden."
+				},
+				"right":["A","B","C","D"]
+			},
+			"132" : {
+				"question":"Wie hängen die drei Standards ISO 9000, ISO/IEC 20000 und ISO/IEC 27001 zusammen?",
+				"answers":{
+					"A":"ISO/IEC 27000 ist eine Kombination aus ISO 9000 und ISO/IEC 2000.",
+					"B":"Diese drei Normen behandeln Managementsysteme in zum Teil überlappenden Anwendungsbereichen.",
+					"C":"Diese drei Normen behandeln Management und Qualitätssicherung.",
+					"D":"Die Zertifizierungen für diese drei Standards bauen aufeinander auf, d.h. eine Zertifizierung nach ISO/IEC 27001 ist nur möglich, wenn das Unternehmen auch nach ISO 9000 zertifiziert wurde."
+				},
+				"right":["B"]
+			}
+		}
+	}
+}
