@@ -13,7 +13,7 @@ alias ech='echo "DollarAT: $@"'
 # Unter Windows 11 this causes win to ask for the app to open "$@" with. ???
 #alias gvim='start "/c/Program\ Files/Vim/vim91/gvim \"$@\""'
 #alias gvim='start "/c/Program Files/Vim/vim91/gvim.exe \"$@\""'
-#alias gvim='start "C:\Program Files\Vim\vim91\gvim.exe \"$@\""'
+alias gvim='/c/Program\ Files/Vim/vim91/gvim -c "set ff=unix" "$@"'
 alias vi='vim'
 alias ..='cd ..'
 alias ...='cd ../../'
