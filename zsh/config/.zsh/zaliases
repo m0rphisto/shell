@@ -8,12 +8,6 @@
 alias ralias='vim ~/.zsh/zaliases; source ~/.zsh/zaliases'
 alias rfunctions='vim ~/.zsh/zfunctions; source ~/.zsh/zfunctions'
 alias ech='echo "DollarAT: $@"'
-# Doesn't find gvim ???
-#alias gvim='"/c/Program\ Files/Vim/vim91/gvim.exe $@" &'
-# Unter Windows 11 this causes win to ask for the app to open "$@" with. ???
-#alias gvim='start "/c/Program\ Files/Vim/vim91/gvim \"$@\""'
-#alias gvim='start "/c/Program Files/Vim/vim91/gvim.exe \"$@\""'
-alias gvim='/c/Program\ Files/Vim/vim91/gvim -c "set ff=unix" "$@"'
 alias vi='vim'
 alias ..='cd ..'
 alias ...='cd ../../'
@@ -28,6 +22,7 @@ alias grep='grep --color'
 alias egrep='egrep --color'
 alias less='less -r'
 [[ "$OSID" = 'msys2' ]] && {
+   alias gvim='/c/Program\ Files/Vim/vim91/gvim -c "set ff=unix" "$@"'
    alias python='/c/msys2/usr/bin/python3.12.exe'
    alias py='python'
    alias speedtest='python /c/msys2/usr/local/bin/speedtest.py'
