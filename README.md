@@ -8,6 +8,6 @@ Due to the fact that I was student in an educational activity at Cloud Command G
 
 The course is AZAV certified and was really good!
 
-- [Cloud Command :: IHK Cybersecurity Specialist](https://start.cloud-command.de/cyber-security/)
+- [Cloud Command :: IHK Cybersecurity Specialist](https://start.cloud-command.de/cyber-security/) (Hold ctrl+shift pressed while clicking this link to get a new tab)
 
 ---
