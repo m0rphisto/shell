@@ -3,15 +3,35 @@
 ################################################################################
 # Run by ~/.zshrc and updated via ralias
 
+
 # Some aliases
 alias ralias='vim ~/.zsh/zaliases; source ~/.zsh/zaliases'
 alias rfunctions='vim ~/.zsh/zfunctions; source ~/.zsh/zfunctions'
-alias gvim='start /c/Progra~2/Vim/vim90/gvim.exe -c "set ff=unix" "$@"'
+alias ech='echo "DollarAT: $@"'
+# Doesn't find gvim ???
+#alias gvim='"/c/Program\ Files/Vim/vim91/gvim.exe $@" &'
+# Unter Windows 11 this causes win to ask for the app to open "$@" with. ???
+#alias gvim='start "/c/Program\ Files/Vim/vim91/gvim \"$@\""'
+#alias gvim='start "/c/Program Files/Vim/vim91/gvim.exe \"$@\""'
+#alias gvim='start "C:\Program Files\Vim\vim91\gvim.exe \"$@\""'
 alias vi='vim'
 alias ..='cd ..'
 alias ...='cd ../../'
+#alias ls='ls --color=auto'   # does NOT pass the colors into pipes
+alias ls='ls --color=yes'     # passes the colors into pipes
 alias l='ls -alhtr'
 alias ll='ls -alhui'
 alias cp='cp -vi'
 alias mv='mv -vi'
 alias rm='rm -vi'
+alias grep='grep --color'
+alias egrep='egrep --color'
+alias less='less -r'
+[[ "$OSID" = 'msys2' ]] && {
+   alias python='/c/msys2/usr/bin/python3.12.exe'
+   alias py='python'
+   alias speedtest='python /c/msys2/usr/local/bin/speedtest.py'
+   alias ping='PING'
+} || {
+   alias py='python'
+}

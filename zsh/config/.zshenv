@@ -1,36 +1,52 @@
 ################################################################################
-# $Id: zshenv 47 2024-01-21 14:58:27 +0100 .m0rph $
+# $Id: zshenv 48 2025-01-10 08:39:43 +0100 .m0rph $
 ################################################################################
-# Note:
-#  Be carful what to initialize here in .zshenv !!!
-#  First law in zsh configuration is to keep .zshenv as small as possible,
-#  since it is loaded for every single shell, i.e. not only for
-#  interactive or login shells! Environment variables are also initialized
-#  for non-interactive shells and that is every single shell script you write!
-#  So keep in mind to initialize environment varliables you want to have set
-#  for your interactive zsh session in .zshrc.
-################################################################################
-# MINGW64 stuff !!!
-export LC_ALL=de_DE.UTF-8
-export LC_CTYPE=de_DE.UTF-8
-export LANG=DE
+# At first we need to determine which system we are on !!!
+OSID=$(/usr/bin/grep '^ID=' /etc/os-release | /usr/bin/awk -F'=' '{ print $2 }')
 
-# oh-my-zsh home directory
-export ZSH="/usr/share/zsh/.oh-my-zsh"
+[[ "$OSID" = 'msys2' ]] && {
+
+	# MINGW64 stuff !!!
+   export LC_ALL=de_DE.UTF-8
+   export LC_CTYPE=de_DE.UTF-8
+   export LANG=DE
+
+   # oh-my-zsh home directory
+   export ZSH='/usr/share/zsh/.oh-my-zsh'
+   export ZSH_PLUGINS="$ZSH/plugins"
+   export ENABLE_CORRECTION='true'
+   export CASE_SENSITIVE='true'
+
+   # And my additional PATH
+   mypath='/c/.cmd:/c/.man:/c/.pwsh:/c/Users/m0rph/.ssh:/c/Users/m0rph/.gnupg'
+   mypath="$mypath:/d/shell/zsh/:/d/shell/powershell"
+   mypath="$mypath:/d/python:/d/perl:/d/javascript"
+   export PATH="$mypath:$PATH"
+} || {
+   # under linux there is no need for oh-my-zsh
+   export ZSH='/usr/share'
+   export ZSH_PLUGINS=$ZSH
+
+   # but yes, we need some additional PATH information
+   mypath="$HOME/scripts:$HOME/.ssh:$HOME/.gnupg"
+   export PATH="$mypath:$PATH"
+}
 
 
-# And my additional PATH
-mypath="$mypath:/path/to:/your/work/files"
-export PATH="$mypath:$PATH"
+# History mechanism
+HISTFILE=~/.zhistory
+HISTSIZE=1000
+SAVEHIST=2000
+HIST_STAMPS="yyyy-mm-dd"
 
 
-WORDCHARS=${WORDCHARS//\/} # Don't consider certain characters part of the word
+# Don't consider certain characters part of the word
+WORDCHARS=${WORDCHARS//\/}
 
 # hide EOL sign ('%')
 PROMPT_EOL_MARK=""
 
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
-
 
 # EOF

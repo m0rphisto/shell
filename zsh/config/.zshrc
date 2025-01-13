@@ -1,14 +1,16 @@
 ################################################################################
-# $Id: zshrc 35 2024-01-25 19:58:44 +0100 .m0prh $
+# $Id: zshrc 37 2025-01-10 10:07:31 +0100 .m0rph $
 ################################################################################
 # Description:
 # ------------
 #
-# zsh configuration set, derived from my Kali schleppi with a oh-my-zsh
-# installation. This configuration set is for a Windows MSYS2 Linux subsystem.
+# zsh configuration set, derived from my Kali schleppi without an oh-my-zsh
+# installation. This configuration set is usable for all environments where
+# I make use of my beloved Z-Shell, whether I have to install additional
+# frameworks or not. (See zshenv ;-)
 #
 # I use different sets due to the fact, that I do a lot of things on the shell,
-# even under Windows and especially in this environment, or in virtual ones,
+# even under Windows. Especially in my MSYS2 environment, or in virtual ones,
 # opening a new shell can be VERY slow! So, we have to clearly decide, which
 # features to use and what we do not really need.
 #
@@ -16,16 +18,21 @@
 #
 # .m0rph
 #
+# ------------------------------------------------------------------------------
+# Note:
+#  In order to enable syntax-highlighting, zsh-autosuggestions, or other
+#  plugins not contained in .oh-my-zsh, check the zsh-users GitHub.
+#
+#  # cd /usr/share/zsh/plugins
+#  # git clone https://github.com/zsh-users/zsh-autosuggestions
+#  # git clone https://github.com/zsh-users/zsh-syntax-highlighting
+#
 ################################################################################
-# At first another default permission set.
-umask 0077
-
-
-# History mechanism
-HISTFILE=~/.zhistory
-HISTSIZE=1000
-SAVEHIST=2000
-HIST_STAMPS="yyyy-mm-dd"
+# At first another default permission set ...
+[[ "$OSID" = 'msys2' ]] || {
+   # ... but not under Windows and MSYS2. It only has drawbacks !!!
+   umask 0077
+}
 
 # We need some options directly at the beginning.
 [[ -f ~/.zsh/zoptions ]] && source ~/.zsh/zoptions
@@ -45,7 +52,13 @@ bindkey '^[[H' beginning-of-line               # home
 bindkey '^[[F' end-of-line                     # end
 bindkey '^[[Z' undo                            # shift + tab undo last action
 
-
+## Lines configured by zsh-newuser-install
+## End of lines configured by zsh-newuser-install
+## The following lines were added by compinstall
+#autoload -Uz compinit
+#compinit
+## End of lines added by compinstall
+# enable completion features
 zstyle :compinstall filename '~/.zshrc'
 autoload -Uz compinit
 compinit -d ~/.cache/zcompdump
@@ -70,13 +83,14 @@ scr=0
 
 
 # make less more friendly for non-text input files, see lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 force_color_prompt=yes
+
 
 if [ -n "$force_color_prompt" ]; then
    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -111,7 +125,7 @@ pactive='kprompt' # default prompt
 toggle_prompt(){
    pactive="$1"
    [[ "$pactive" == 'kprompt' ]] && {
-      # This one we only have in zsh_kprompt
+   # This one we only have in kprompt
       if [ "$PROMPT_ALTERNATIVE" = oneline ]; then
          PROMPT_ALTERNATIVE=twoline
       else
@@ -149,8 +163,8 @@ if [ "$color_prompt" = yes ]; then
    "set_$pactive"
 
    # enable syntax-highlighting
-   [[ -f $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && {
-      . $ZSH/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+   [[ -f $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && {
+      . $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
       ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
       ZSH_HIGHLIGHT_STYLES[default]=none
       ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=white,underline
@@ -202,20 +216,22 @@ unset color_prompt force_color_prompt
 
 # enable color support of ls, less and man, and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+   [[ -r ~/.dircolors ]] && \
+      eval "$(dircolors -b ~/.dircolors)" || \
+      eval "$(dircolors -b)"
 
    zcolors=1
 
    # fix ls color for folders with 777 permissions
    export LS_COLORS="$LS_COLORS:ow=30;44:"
 
-   export LESS_TERMCAP_mb=$'\E[1;31m'   # begin blink
-   export LESS_TERMCAP_md=$'\E[1;36m'   # begin bold
-   export LESS_TERMCAP_me=$'\E[0m'      # reset bold/blink
-   export LESS_TERMCAP_so=$'\E[01;33m'  # begin reverse video
-   export LESS_TERMCAP_se=$'\E[0m'      # reset reverse video
-   export LESS_TERMCAP_us=$'\E[1;32m'   # begin underline
-   export LESS_TERMCAP_ue=$'\E[0m'      # reset underline
+   export LESS_TERMCAP_mb=$'\E[1;31m'  # begin blink
+   export LESS_TERMCAP_md=$'\E[1;36m'  # begin bold
+   export LESS_TERMCAP_me=$'\E[0m'     # reset bold/blink
+   export LESS_TERMCAP_so=$'\E[01;33m' # begin reverse video
+   export LESS_TERMCAP_se=$'\E[0m'     # reset reverse video
+   export LESS_TERMCAP_us=$'\E[1;32m'  # begin underline
+   export LESS_TERMCAP_ue=$'\E[0m'     # reset underline
 
    # Take advantage of $LS_COLORS for completion as well
    zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
@@ -231,17 +247,21 @@ fi
 
 
 ## enable auto-suggestions based on the history
-if [ -f $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-   . $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [ -f $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+   . $ZSH_PLUGINS/zsh-autosuggestions/zsh-autosuggestions.zsh
    # change suggestion color
    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
 fi
 
-## Load oh-my-zsh plugins.
-source $ZSH/oh-my-zsh.sh
-plugins=(
-   git
-)
+### We don't need that under Linux !!!
+[[ "$OSID" = 'msys2' ]] && {
+   # Load oh-my-zsh plugins.
+   source $ZSH/oh-my-zsh.sh
+   plugins=(
+     command-not-found
+     git
+   )
+}
 
 
 # Preparing my environment, loading zscripts. We do this at the end, because
@@ -251,7 +271,11 @@ plugins=(
 [[ -f ~/.zsh/zgaliases ]]  && source ~/.zsh/zgaliases
 [[ -f ~/.zsh/zfunctions ]] && source ~/.zsh/zfunctions
 [[ -f ~/.zsh/zdhashes ]]   && source ~/.zsh/zdhashes
-[[ -f ~/.zsh/zgit ]]       && source ~/.zsh/zgit
+#[[ -f ~/.zsh/ztest ]] && source ~/.zsh/ztest
+
+
+# Increase Mozilla performance a bit.
+export MOZ_DISABLE_PANGO=1
 
 
 # EOF

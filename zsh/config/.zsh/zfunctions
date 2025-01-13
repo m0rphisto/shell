@@ -1,5 +1,5 @@
 ################################################################################
-# $Id: zfunctions 2 2024-01-21 14:38:47 +0100 .m0rph $
+# $Id: zfunctions 4 2025-01-13 06:58:47 +0100 .m0rph $
 ################################################################################
 # Run by ~/.zshrc and updated via rfunctions
 # Some functions, quasi-aliases.
@@ -17,11 +17,44 @@ wman() {
    }
 }
 
-getpkg() {
-   wget -U "$user_agent" -O "$1" "https://repo.msys2.org/msys/x86_64/$1"
+# check CVEs
+# cve.org insists on JavaScript usage
+#cve() { w3m -header "$header_ua" "https://cve.org/CVERecord?id=CVE-$1" }
+# OK, GOT IT !!! We have to download the CVE record from a GitHub.
+cve() {
+   url='https://raw.githubusercontent.com/CVEProject/cvelistV5/refs/heads/main/cves'
+   year=$(echo $1 | awk -F'-' '{ print $1 }')
+   thc=$(echo $1 | awk -F'-' '{ print $2 }' | sed -e 's/\([0-9]\{2\}\)[0-9]\{3\}/\1/')
+   wget -O ~/docs/CVEs/${1}.json "$url/$year/${thc}xxx/CVE-$1.json"
+   #echo "$url/$year/${thc}xxx/CVE-$1.json"
 }
+
+# 2024-10-02: We do not longer need this function.
+#  We now use the MSYS2 package manager pacman.
+#getpkg() {
+#   wget -U "$user_agent" -O "$1" "https://repo.msys2.org/msys/x86_64/$1"
+#}
 
 leo() { w3m "https://dict.leo.org/englisch-deutsch/$1" }
 dict() { w3m "https://www.dict.cc/?s=$1" }
 duden() { w3m "https://duden.de/rechtschreibung/$1" }
 google() { w3m -header "$header_ua" "https://www.google.com/?q=$1" }
+ipinfo() { w3m -header "$header_ua" "https://ipinfo.io/$1" }
+
+################################################################################
+# FUCKING WINDOWS is not an X session. No keyrings, no parent ssh-agent
+# host-process. So we have to start an instance of the ssh-agent for 
+# every single zsh session !!!
+
+gitten() {
+   [[ -z "$SSH_AUTH_SOCK" && -z "$SSH_AGENT_PID" ]] && eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_git_ed25519
+   cd /d/git
+}
+
+bbc() {
+   [[ -z "$SSH_AUTH_SOCK" && -z "$SSH_AGENT_PID" ]] && eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_bb_ed25519
+}
+
+# EOF
