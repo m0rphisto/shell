@@ -1,5 +1,5 @@
 ################################################################################
-# $Id: zaliases 4 2024-01-21 14:36:13 +0100 .m0rph $
+# $Id: zaliases 5 2025-01-13 07:55:33 +0100 .m0rph $
 ################################################################################
 # Run by ~/.zshrc and updated via ralias
 
@@ -20,6 +20,7 @@ alias mv='mv -vi'
 alias rm='rm -vi'
 alias grep='grep --color'
 alias egrep='egrep --color'
+alias egrep='fgrep --color'
 alias less='less -r'
 [[ "$OSID" = 'msys2' ]] && {
    alias gvim='/c/Program\ Files/Vim/vim91/gvim -c "set ff=unix" "$@"'
