@@ -20,7 +20,7 @@ alias mv='mv -vi'
 alias rm='rm -vi'
 alias grep='grep --color'
 alias egrep='egrep --color'
-alias egrep='fgrep --color'
+alias fgrep='fgrep --color'
 alias less='less -r'
 [[ "$OSID" = 'msys2' ]] && {
    alias gvim='/c/Program\ Files/Vim/vim91/gvim -c "set ff=unix" "$@"'
