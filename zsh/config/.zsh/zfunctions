@@ -48,13 +48,13 @@ ipinfo() { w3m -header "$header_ua" "https://ipinfo.io/$1" }
 
 gitten() {
    [[ -z "$SSH_AUTH_SOCK" && -z "$SSH_AGENT_PID" ]] && eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/id_git_ed25519
-   cd /d/coding/git
+   ssh-add /path/to/ssh/key_file
+   cd /path/to/git/repositories
 }
 
 bbc() {
    [[ -z "$SSH_AUTH_SOCK" && -z "$SSH_AGENT_PID" ]] && eval "$(ssh-agent -s)"
-   ssh-add ~/.ssh/id_bb_ed25519
+   ssh-add /path/to/ssh/key_file
 }
 
 # EOF
