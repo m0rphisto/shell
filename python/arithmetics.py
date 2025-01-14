@@ -4,7 +4,7 @@ fid='$Id: arithmetics.py v0.3 2024-03-15 10:18:27 +0100 .m0rph $'
 ################################################################################
 # Description:
 #  This was a homework during my recent educational cource, where we had to
-#  calculate with IP addresses at the binary level.
+#  calculate with binary values.
 ################################################################################
 # No shebang under Windows !!!
 
