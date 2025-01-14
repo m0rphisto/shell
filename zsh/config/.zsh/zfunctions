@@ -21,12 +21,14 @@ wman() {
 # cve.org insists on JavaScript usage
 #cve() { w3m -header "$header_ua" "https://cve.org/CVERecord?id=CVE-$1" }
 # OK, GOT IT !!! We have to download the CVE record from a GitHub.
-cve() {
+getcve() {
+   year=$(echo $1 | awk -F'-' '{ print $1 }')   # split arg into year
+   cnt=$(echo $1 | awk -F'-' '{ print $2 }')    # and cve number (count)
+   len=$(echo -n $cnt | wc -m)                  # count characters
+   [[ $len = 4 ]] && dir=$(echo -n $cnt | sed -e 's/^\([0-9]\)[0-9]\{3\}/\1xxx/')
+   [[ $len = 5 ]] && dir=$(echo -n $cnt | sed -e 's/^\([0-9]\{2\}\)[0-9]\{3\}/\1xxx/')
    url='https://raw.githubusercontent.com/CVEProject/cvelistV5/refs/heads/main/cves'
-   year=$(echo $1 | awk -F'-' '{ print $1 }')
-   thc=$(echo $1 | awk -F'-' '{ print $2 }' | sed -e 's/\([0-9]\{2\}\)[0-9]\{3\}/\1/')
-   wget -O ~/docs/CVEs/${1}.json "$url/$year/${thc}xxx/CVE-$1.json"
-   #echo "$url/$year/${thc}xxx/CVE-$1.json"
+   wget -O /path/to/CVEs/${1}.json "$url/$year/$dir/CVE-$1.json"
 }
 
 # 2024-10-02: We do not longer need this function.
@@ -48,13 +50,12 @@ ipinfo() { w3m -header "$header_ua" "https://ipinfo.io/$1" }
 
 gitten() {
    [[ -z "$SSH_AUTH_SOCK" && -z "$SSH_AGENT_PID" ]] && eval "$(ssh-agent -s)"
-   ssh-add /path/to/ssh/key_file
-   cd /path/to/git/repositories
+   ssh-add /path/to/ssh_key
 }
 
 bbc() {
    [[ -z "$SSH_AUTH_SOCK" && -z "$SSH_AGENT_PID" ]] && eval "$(ssh-agent -s)"
-   ssh-add /path/to/ssh/key_file
+   ssh-add /path/to/ssh_key
 }
 
 # EOF
