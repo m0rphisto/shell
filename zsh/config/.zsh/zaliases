@@ -1,5 +1,5 @@
 ################################################################################
-# $Id: zaliases 5 2025-01-13 07:55:33 +0100 .m0rph $
+# $Id: zaliases 6 2025-01-14 08:02:12 +0100 .m0rph $
 ################################################################################
 # Run by ~/.zshrc and updated via ralias
 
@@ -23,6 +23,9 @@ alias egrep='egrep --color'
 alias fgrep='fgrep --color'
 alias less='less -r'
 [[ "$OSID" = 'msys2' ]] && {
+   # Note that you will have to start this process in background,
+   # otherwise the shell will be blocked. ;-)
+   # Ex: user@host: ~$ gvim script.zsh &
    alias gvim='/c/Program\ Files/Vim/vim91/gvim -c "set ff=unix" "$@"'
    alias python='/c/msys2/usr/bin/python3.12.exe'
    alias py='python'
@@ -31,3 +34,5 @@ alias less='less -r'
 } || {
    alias py='python'
 }
+
+# EOF
