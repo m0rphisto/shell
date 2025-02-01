@@ -1,13 +1,13 @@
 #!/bin/zsh
 ################################################################################
-# $Id: getrfc v0.3 2025-02-01 10:27:45 +0100 .m0rph $
-########################################################################
+# $Id: getrfc v0.3 2025-02-01 14:43:10 +0100 .m0rph $
+################################################################################
 # Description:
 #  Sometimes it's really a mess and time consuming to lookup for
 #  multiple RFCs, so we simply need to 'quickly' download the RFC files
 #  from the database on the shell.
 #
-#-------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 # ToDo:
 #  v0.4 Extract headline from RFC file and build a filename from that.
 #       Ex: rfc12345.the-headline-of-the-rfc.txt
@@ -18,10 +18,12 @@
 
 # Initializing variables
 
-dir="$HOME/RFCs"
-me=${0##*/}
-version=0.3
-exe=0
+domain='www.rfc-editor.org'
+dir="$HOME/RFCs"  # where to store the RFCs
+me=${0##*/}       # get the script name via variable expansion
+version=0.3       # script version
+multi=0           # fetch multiple files?
+rfcs=''           # the RFCs to fetch
 
 ################################################################################
 
@@ -64,11 +66,10 @@ usage()
    exit 0
 }
 
-err_proto() { echo "ERROR: Wrong protocol! Falling back to https."  }
-err_type()  { echo "ERROR: Wrong file type! Falling back to ASCII." }
+err_proto() { print -l -- "ERROR: Wrong protocol! Falling back to https."  }
+err_type()  { print -l -- "ERROR: Wrong file type! Falling back to ASCII." }
 
 
-rfcs=() # Define global array.
 rfcnums()
 {
    # $1 == Parameter passed to the function.
@@ -76,12 +77,12 @@ rfcnums()
    # $#args elements in the array $args[@]
 
    i=1
-   for arg in ${(z)1:gs/,/ /}; do
-      rfcs[i]=$arg
+   for arg (${(z)1:gs/,/ /})
+   {
       (( i++ ))
-   done
-
-   exe=$i
+   }
+   multi=$i
+   [[ $multi > 1 ]] && rfcs='{'$1'}' || rfcs=$1
 }
 
 ################################################################################
@@ -89,7 +90,7 @@ rfcnums()
 # Get options.
 
 # $# == NUMBER OF POSITIONAL PARAMETERS (see param.test)
-[[ $# < 1 ]] && { echo "$me: No arguments !!! Exiting."; exit 1 }
+[[ $# < 1 ]] && { print -l -- "$me: No arguments !!! Exiting."; exit 1 }
 [[ $# > 0 ]] && {
 
    while getopts ':hvp:u:n:t:' opts; do
@@ -99,7 +100,7 @@ rfcnums()
          p) case $OPTARG in
                https)                ;;
                http)    proto='http' ;;
-               *)       to           ;;
+               *)       err_proto    ;;
             esac
             ;;
          u) url="$OPTARG"     ;; # Complete URL
@@ -109,17 +110,18 @@ rfcnums()
                pdf)     ext='txt.pdf'; fp='pdfrfc'            ;;
                html)    ext='html';    fp='rfc'               ;;
                htmle)   ext='html';    fp='rfc/inline-errata' ;;
+               *)
+                  err_type ;; # falling back to ASCII
             esac
             ;;
-         t) ftype="$OPTARG"  ;; # RFC filetype
-         *) usage                   ;;
+         *) usage ;;
       esac
    done
 
 
    # Get RFC number, if not already passed by -n
    #rfc=${rfc-"$1"} # !!! No direct passing possible: ${rfc-$1} doesn't work.
-   [[ $exe < 1 ]] && { rfcnums "$1" }
+   [[ $multi < 1 ]] && rfcnums "$1"
 
    # Get file extension, if not passed via -t
    ext=${ext-'txt'}  # Default is ASCII format.
@@ -128,13 +130,16 @@ rfcnums()
    fp=${fp-'rfc'}
 
 
-   # Finally build download URL and wget RFC sheet.
+   # Finally build download URL and get RFC sheet(s).
    version
-   for rfc in ${(z)rfcs}; do # The flag (z) let's us iterate through $rfcs[@]
-      # Don't use path nor fpath !!! They are used by zsh !!!
-      url=${proto-'https'}'://'${domain-'www.rfc-editor.org'}"/$fp/rfc$rfc.$ext"
-      wget -P $dir $url
-   done
+   url=${proto-'https'}"://${domain}/$fp/rfc$rfcs.$ext"
+   [[ $multi > 1 ]] && {
+      # With multiple files we try to fetch via one connection.
+      # Ex: curl https://do.main/file{1,2,3}.txt -o "file#1.txt"
+      curl "$url" -o "$dir/rfc#1.$ext"
+   } || {
+      curl "$url" -o "$dir/rfc$rfcs.$ext"
+   }
 }
 
 ################################################################################
