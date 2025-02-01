@@ -32,6 +32,7 @@ multi=0           # fetch multiple files?
 year=''           # the year the CVE was published
 cves=()           # the CVEs to fetch
 cOK=0             # CVE number(s) passed on cmd line? 0=no, 1=yes
+yOK=0             # year passed on cmd line? 0=no, 1=yes
 
 ################################################################################
 
@@ -122,22 +123,26 @@ getcdir()
       case $opts in
          h) version; usage           ;;
          v) version; exit 0          ;;
-         y) chkyear "$OPTARG"        ;; # year published
+         y) chkyear "$OPTARG"  yOK=1 ;; # year published
          n) cvenums "$OPTARG"; cOK=1 ;; # CVE number(s)
          *) usage                    ;;
       esac
    done
 
-
-   # Finally build download URL and get RFC sheet(s).
-   version
-   url="${domain}/$cvepath/$year"
-   for cve (${(z)cves})
-   {
-      getcdir "$cve"
-      file="$cdir/CVE-${year}-$cve.json"
-      curl "$url/$file" -o "$dir/CVE-${year}-$cve.json"
-      #print -l -- "$url/$file" -o "$dir/CVE-${year}-$cve.json"
+   [[ $cOK = 0 || $yOK = 0 ]] && {
+      print -l -- "$me: No year or CVE numbers. Exiting !!!"
+      usage
+   } || {
+      # Finally build download URL and get RFC sheet(s).
+      version
+      url="${domain}/$cvepath/$year"
+      for cve (${(z)cves})
+      {
+         getcdir "$cve"
+         file="$cdir/CVE-${year}-$cve.json"
+         curl "$url/$file" -o "$dir/CVE-${year}-$cve.json"
+         #print -l -- "$url/$file" -o "$dir/CVE-${year}-$cve.json"
+      }
    }
 }
 
