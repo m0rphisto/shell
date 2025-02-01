@@ -1,6 +1,6 @@
 #!/bin/zsh
 ################################################################################
-# $Id: getcve v0.1 2025-02-01 15:10:19 +0100 .m0rph $
+# $Id: getcve v0.1 2025-02-01 18:39:57 +0100 .m0rph $
 ################################################################################
 # Description:
 #  Sometimes it's really a mess and time consuming to lookup for
@@ -67,7 +67,6 @@ usage()
       $me -y 2025 -n 24012
       $me -y 2024 -n 45419[,45420,45421,...]
 "
-   exit 0
 }
 
 chkyear()
@@ -121,17 +120,18 @@ getcdir()
 
    while getopts ':hvy:n:' opts; do
       case $opts in
-         h) version; usage           ;;
-         v) version; exit 0          ;;
-         y) chkyear "$OPTARG"  yOK=1 ;; # year published
+         h) version; usage; exit 0   ;;
+         v) version;        exit 0   ;;
+         y) chkyear "$OPTARG"; yOK=1 ;; # year published
          n) cvenums "$OPTARG"; cOK=1 ;; # CVE number(s)
          *) usage                    ;;
       esac
    done
 
    [[ $cOK = 0 || $yOK = 0 ]] && {
-      print -l -- "$me: No year or CVE numbers. Exiting !!!"
+      print -l -- "$me: No year or CVE numbers. Exiting !!!"; 
       usage
+      exit 1
    } || {
       # Finally build download URL and get RFC sheet(s).
       version
@@ -140,8 +140,8 @@ getcdir()
       {
          getcdir "$cve"
          file="$cdir/CVE-${year}-$cve.json"
-         curl "$url/$file" -o "$dir/CVE-${year}-$cve.json"
-         #print -l -- "$url/$file" -o "$dir/CVE-${year}-$cve.json"
+         #curl "$url/$file" -o "$dir/CVE-${year}-$cve.json"
+         print -l -- "$url/$file" -o "$dir/CVE-${year}-$cve.json"
       }
    }
 }
