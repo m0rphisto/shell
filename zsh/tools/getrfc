@@ -1,0 +1,142 @@
+#!/bin/zsh
+################################################################################
+# $Id: getrfc v0.3 2025-02-01 10:27:45 +0100 .m0rph $
+########################################################################
+# Description:
+#  Sometimes it's really a mess and time consuming to lookup for
+#  multiple RFCs, so we simply need to 'quickly' download the RFC files
+#  from the database on the shell.
+#
+#-------------------------------------------------------------------------------
+# ToDo:
+#  v0.4 Extract headline from RFC file and build a filename from that.
+#       Ex: rfc12345.the-headline-of-the-rfc.txt
+#
+################################################################################
+# /usr/bin/env zsh (can help if SheBang doesn't work)
+
+
+# Initializing variables
+
+dir="$HOME/RFCs"
+me=${0##*/}
+version=0.3
+exe=0
+
+################################################################################
+
+# Functions
+
+version() { echo "$me: v$version" }
+usage()
+{
+   print "usage:
+
+   $me RFCnum[,RFCnum2,RFCnum3,...]
+   $me [option] [URL]
+
+   Options:
+      -v       Print script version.
+      -h       Print this help.
+
+      -n RFC   Set RFC number to get.
+
+      -n RFC1,RFC2,RFC2 
+               This option also accepts a comma separated list of multiple
+               numbers, in order to get different RFC sheets.
+
+      -t       Set filetype. Default is txt format.
+               Possible formats:
+                  txt   :: Regular ASCII format (txt files).
+                  pdf   :: Regular ASCII format converted to PDF.
+                  html  :: HTML (web) format.
+                  htmle :: HTML format with inline errata.
+
+      -p       Set protocol (http|https). Default is https.
+      -u       Set URL to get the RFC file from. Default is the regular RFC
+               database at rfc-editor.org.
+
+   Examples:
+      $me -u https://www.rfc-editor.org/rfc/rfc792.txt
+      $me -p https -n 792[,1918,6598,...]
+      $me 792[,1918,6598,...]
+"
+   exit 0
+}
+
+err_proto() { echo "ERROR: Wrong protocol! Falling back to https."  }
+err_type()  { echo "ERROR: Wrong file type! Falling back to ASCII." }
+
+
+rfcs=() # Define global array.
+rfcnums()
+{
+   # $1 == Parameter passed to the function.
+   # ${1:gs/,/ /} Parameter substitution like s/search/replace/g in Perl.
+   # $#args elements in the array $args[@]
+
+   i=1
+   for arg in ${(z)1:gs/,/ /}; do
+      rfcs[i]=$arg
+      (( i++ ))
+   done
+
+   exe=$i
+}
+
+################################################################################
+
+# Get options.
+
+# $# == NUMBER OF POSITIONAL PARAMETERS (see param.test)
+[[ $# < 1 ]] && { echo "$me: No arguments !!! Exiting."; exit 1 }
+[[ $# > 0 ]] && {
+
+   while getopts ':hvp:u:n:t:' opts; do
+      case $opts in
+         h) version; usage;   exit 0 ;;
+         v) version;          exit 0 ;;
+         p) case $OPTARG in
+               https)                ;;
+               http)    proto='http' ;;
+               *)       to           ;;
+            esac
+            ;;
+         u) url="$OPTARG"     ;; # Complete URL
+         n) rfcnums "$OPTARG" ;; # RFC number(s)
+         t) case $OPTARG in
+               txt)     ext='txt';     fp='rfc'               ;;
+               pdf)     ext='txt.pdf'; fp='pdfrfc'            ;;
+               html)    ext='html';    fp='rfc'               ;;
+               htmle)   ext='html';    fp='rfc/inline-errata' ;;
+            esac
+            ;;
+         t) ftype="$OPTARG"  ;; # RFC filetype
+         *) usage                   ;;
+      esac
+   done
+
+
+   # Get RFC number, if not already passed by -n
+   #rfc=${rfc-"$1"} # !!! No direct passing possible: ${rfc-$1} doesn't work.
+   [[ $exe < 1 ]] && { rfcnums "$1" }
+
+   # Get file extension, if not passed via -t
+   ext=${ext-'txt'}  # Default is ASCII format.
+
+   # Get path information, if not determined via -t
+   fp=${fp-'rfc'}
+
+
+   # Finally build download URL and wget RFC sheet.
+   version
+   for rfc in ${(z)rfcs}; do # The flag (z) let's us iterate through $rfcs[@]
+      # Don't use path nor fpath !!! They are used by zsh !!!
+      url=${proto-'https'}'://'${domain-'www.rfc-editor.org'}"/$fp/rfc$rfc.$ext"
+      wget -P $dir $url
+   done
+}
+
+################################################################################
+
+exit 0
