@@ -10,7 +10,7 @@ const { sprintf } = require('sprintf-js');
  *    018 == '108' := true
  *
  * A professional JS coder asked this seriously on X! This exactly is the reason,
- * why we security researchers have so much work to do. Missing knwoledge!
+ * why we security researchers have so much work to do. Missing knowledge!
  *
  * Just a small excursion into number systems:
  *    dec   oct   hex   bin         | dec   oct   hex   bin
