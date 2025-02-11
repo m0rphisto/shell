@@ -1,0 +1,151 @@
+#!/bin/zsh
+################################################################################
+# $Id: getcve v0.1 2025-02-01 18:39:57 +0100 .m0rph $
+################################################################################
+# Description:
+#  Sometimes it's really a mess and time consuming to lookup for
+#  multiple CVEs, so we simply need to 'quickly' download the CVE files
+#  from the MITRE's GitHub database on the shell.
+#
+#  MITRE publishes the vulns in JSON format in their repository.
+#
+# ------------------------------------------------------------------------------
+# ToDo:
+#  v0.2 We want to also find CVEs from different year's folders by one run.
+#       The actual version only can get multiple CVEs from one year.
+#  v0.3 Extract title from CVE file and build a filename from that.
+#       Ex: cve-2025-12345.title-of-the-cve.json
+#
+################################################################################
+# /usr/bin/env zsh (can help if SheBang doesn't work)
+
+
+# Initializing variables
+
+domain='https://raw.githubusercontent.com'
+cvepath='CVEProject/cvelistV5/refs/heads/main/cves'
+cdir=''           # URL path (0xxx, 20xxx, etc)
+dir="$HOME/CVEs"  # where to store the CVEs
+me=${0##*/}       # get the script name via variable expansion
+version=0.1       # script version
+multi=0           # fetch multiple files?
+year=''           # the year the CVE was published
+cves=()           # the CVEs to fetch
+cOK=0             # CVE number(s) passed on cmd line? 0=no, 1=yes
+yOK=0             # year passed on cmd line? 0=no, 1=yes
+
+################################################################################
+
+# Functions
+
+version() { echo "$me: v$version" }
+usage()
+{
+   print "usage:
+
+   $me -y YEAR -n CVEnum[,CVEnum2,CVEnum3,...]
+
+   Options:
+      -v       Print script version.
+      -h       Print this help.
+
+      -y YEAR  Set the CVEs year in order to get the right path.
+      -n CVE   Set CVE number to get.
+
+      -n CVE1,CVE2,CVE2 
+               This option also accepts a comma separated list of multiple
+               numbers, in order to get different CVE files.
+
+               Note that ALL CVEs have to be published the same year !!!
+               They will only be found in the correct year's folder! 
+
+
+   It is mandatory to specify the year the CVEs was/were published in,
+   or we cannot find any.
+
+   Examples:
+      $me -y 2025 -n 24012
+      $me -y 2024 -n 45419[,45420,45421,...]
+"
+}
+
+chkyear()
+{
+   # MIRTE started publishing CVEs at this GitHub in 1999.
+   # See: https://github.com/CVEProject/cvelistV5/tree/main/cves
+   for yyyy ({1999..$(date +'%Y')}) # Setting a range, e.g. {1..10}
+   {
+      [[ "$yyyy" = "$1" ]] && {
+         year="$1"
+         return 0
+      }
+   }
+   print -l -- "ERROR: Wrong year! Nothing to lookup. Exiting !!!"
+   exit 1
+}
+
+cvenums()
+{
+   # $1 == Parameter passed to the function.
+   # ${1:gs/,/ /} Parameter substitution like s/search/replace/g in Perl.
+   # $#args elements in the array $args[@]
+   # Note that zsh arrays start at index 1.
+
+   i=1
+   for arg (${(z)1:gs/,/ /})
+   {
+      cves[$i]=$arg
+      (( i++ ))
+   }
+}
+
+getcdir()
+{
+   cnt=${#1} # get strlen
+   [[ $cnt = 4 ]] && {
+      cdir=$(echo -n $1 | sed -e 's/^\([0-9]\)[0-9]\{3\}/\1xxx/')
+   }
+   [[ $cnt = 5 ]] && {
+      cdir=$(echo -n $1 | sed -e 's/^\([0-9]\{2\}\)[0-9]\{3\}/\1xxx/')
+   }
+}
+
+################################################################################
+
+# Get options.
+
+# $# == NUMBER OF POSITIONAL PARAMETERS (see param.test)
+[[ $# < 1 ]] && { print -l -- "$me: No arguments !!! Exiting."; exit 1 }
+[[ $# > 0 ]] && {
+
+   while getopts ':hvy:n:' opts; do
+      case $opts in
+         h) version; usage; exit 0   ;;
+         v) version;        exit 0   ;;
+         y) chkyear "$OPTARG"; yOK=1 ;; # year published
+         n) cvenums "$OPTARG"; cOK=1 ;; # CVE number(s)
+         *) usage                    ;;
+      esac
+   done
+
+   [[ $cOK = 0 || $yOK = 0 ]] && {
+      print -l -- "$me: No year or CVE numbers. Exiting !!!"; 
+      usage
+      exit 1
+   } || {
+      # Finally build download URL and get RFC sheet(s).
+      version
+      url="${domain}/$cvepath/$year"
+      for cve (${(z)cves})
+      {
+         getcdir "$cve"
+         file="$cdir/CVE-${year}-$cve.json"
+         #curl "$url/$file" -o "$dir/CVE-${year}-$cve.json"
+         print -l -- "$url/$file" -o "$dir/CVE-${year}-$cve.json"
+      }
+   }
+}
+
+################################################################################
+
+exit 0

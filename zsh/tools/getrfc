@@ -1,0 +1,147 @@
+#!/bin/zsh
+################################################################################
+# $Id: getrfc v0.3 2025-02-01 14:43:10 +0100 .m0rph $
+################################################################################
+# Description:
+#  Sometimes it's really a mess and time consuming to lookup for
+#  multiple RFCs, so we simply need to 'quickly' download the RFC files
+#  from the database on the shell.
+#
+# ------------------------------------------------------------------------------
+# ToDo:
+#  v0.4 Extract headline from RFC file and build a filename from that.
+#       Ex: rfc12345.the-headline-of-the-rfc.txt
+#
+################################################################################
+# /usr/bin/env zsh (can help if SheBang doesn't work)
+
+
+# Initializing variables
+
+domain='www.rfc-editor.org'
+dir="$HOME/RFCs"  # where to store the RFCs
+me=${0##*/}       # get the script name via variable expansion
+version=0.3       # script version
+multi=0           # fetch multiple files?
+rfcs=''           # the RFCs to fetch
+
+################################################################################
+
+# Functions
+
+version() { echo "$me: v$version" }
+usage()
+{
+   print "usage:
+
+   $me RFCnum[,RFCnum2,RFCnum3,...]
+   $me [option] [URL]
+
+   Options:
+      -v       Print script version.
+      -h       Print this help.
+
+      -n RFC   Set RFC number to get.
+
+      -n RFC1,RFC2,RFC2 
+               This option also accepts a comma separated list of multiple
+               numbers, in order to get different RFC sheets.
+
+      -t       Set filetype. Default is txt format.
+               Possible formats:
+                  txt   :: Regular ASCII format (txt files).
+                  pdf   :: Regular ASCII format converted to PDF.
+                  html  :: HTML (web) format.
+                  htmle :: HTML format with inline errata.
+
+      -p       Set protocol (http|https). Default is https.
+      -u       Set URL to get the RFC file from. Default is the regular RFC
+               database at rfc-editor.org.
+
+   Examples:
+      $me -u https://www.rfc-editor.org/rfc/rfc792.txt
+      $me -p https -n 792[,1918,6598,...]
+      $me 792[,1918,6598,...]
+"
+   exit 0
+}
+
+err_proto() { print -l -- "ERROR: Wrong protocol! Falling back to https."  }
+err_type()  { print -l -- "ERROR: Wrong file type! Falling back to ASCII." }
+
+
+rfcnums()
+{
+   # $1 == Parameter passed to the function.
+   # ${1:gs/,/ /} Parameter substitution like s/search/replace/g in Perl.
+   # $#args elements in the array $args[@]
+
+   i=1
+   for arg (${(z)1:gs/,/ /})
+   {
+      (( i++ ))
+   }
+   multi=$i
+   [[ $multi > 1 ]] && rfcs='{'$1'}' || rfcs=$1
+}
+
+################################################################################
+
+# Get options.
+
+# $# == NUMBER OF POSITIONAL PARAMETERS (see param.test)
+[[ $# < 1 ]] && { print -l -- "$me: No arguments !!! Exiting."; exit 1 }
+[[ $# > 0 ]] && {
+
+   while getopts ':hvp:u:n:t:' opts; do
+      case $opts in
+         h) version; usage;   exit 0 ;;
+         v) version;          exit 0 ;;
+         p) case $OPTARG in
+               https)                ;;
+               http)    proto='http' ;;
+               *)       err_proto    ;;
+            esac
+            ;;
+         u) url="$OPTARG"     ;; # Complete URL
+         n) rfcnums "$OPTARG" ;; # RFC number(s)
+         t) case $OPTARG in
+               txt)     ext='txt';     fp='rfc'               ;;
+               pdf)     ext='txt.pdf'; fp='pdfrfc'            ;;
+               html)    ext='html';    fp='rfc'               ;;
+               htmle)   ext='html';    fp='rfc/inline-errata' ;;
+               *)
+                  err_type ;; # falling back to ASCII
+            esac
+            ;;
+         *) usage ;;
+      esac
+   done
+
+
+   # Get RFC number, if not already passed by -n
+   #rfc=${rfc-"$1"} # !!! No direct passing possible: ${rfc-$1} doesn't work.
+   [[ $multi < 1 ]] && rfcnums "$1"
+
+   # Get file extension, if not passed via -t
+   ext=${ext-'txt'}  # Default is ASCII format.
+
+   # Get path information, if not determined via -t
+   fp=${fp-'rfc'}
+
+
+   # Finally build download URL and get RFC sheet(s).
+   version
+   url=${proto-'https'}"://${domain}/$fp/rfc$rfcs.$ext"
+   [[ $multi > 1 ]] && {
+      # With multiple files we try to fetch via one connection.
+      # Ex: curl https://do.main/file{1,2,3}.txt -o "file#1.txt"
+      curl "$url" -o "$dir/rfc#1.$ext"
+   } || {
+      curl "$url" -o "$dir/rfc$rfcs.$ext"
+   }
+}
+
+################################################################################
+
+exit 0

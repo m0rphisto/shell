@@ -1,0 +1,45 @@
+#!/usr/bin/zsh
+###############################################################################
+# $Id: mkzs v0.2 2025-02-01 11:02:08 +0100 .m0rph Exp $
+###############################################################################
+# /usr/bin/env zsh (can help if SheBang is wrong)
+
+me=${0##*/}
+
+# Do we have a script name? Senseless without !!!
+[[ -z "$1" ]] && {
+   print -l 'Sorry, we need a script name. Exiting !!!'
+   exit 1
+}
+script="${1##*/}"
+
+# Where is our Z-Shell
+#zshell=$(which zsh)
+
+# Get date, time and time zone
+timestamp=$(date +'%Y-%m-%d %H:%M:%S %z')
+
+body="#!$(which zsh)
+###############################################################################
+# \$Id: $script v0.1 $timestamp .m0rph Exp $
+###############################################################################
+# /usr/bin/env zsh (can help if SheBang doesn't work)
+
+# Variable section
+me=\${0##*/}
+
+
+###############################################################################
+
+# Our script code goes here ...
+
+
+###############################################################################
+exit 0
+"
+
+print -l -- "$me: Creating script file '$script'."
+print $body > $script
+gvim $script
+
+exit 0
