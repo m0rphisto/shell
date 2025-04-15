@@ -7,9 +7,10 @@
 #
 #  This template uses the zsh module zparseopts with optional opts setting.
 #  Different from the builtin function getopts or GNU getopt, we can simply
-#  'empty options' that should carry an argument, because with two colons
-#  zparseopts stores the option itself AND its argument in the same array
-#  element. So can simply validate it, or rub it out via parameter expansion.
+#  validate 'empty options' that should carry an argument, because with two
+#  colons zparseopts stores the option itself AND its argument in the same 
+#  array element. So can simply validate it, or rub it out via parameter
+#  expansion.
 #
 ################################################################################
 
