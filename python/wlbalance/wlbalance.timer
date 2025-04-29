@@ -1,0 +1,11 @@
+[Unit]
+Description=Run Work-Life Balance Notifier every 3 hours
+
+[Timer]
+OnBootSec=10min
+OnUnitActiveSec=3h
+AccuracySec=1min
+
+[Install]
+WantedBy=timers.target
+

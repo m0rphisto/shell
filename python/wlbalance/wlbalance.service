@@ -1,0 +1,8 @@
+[Unit]
+Description=Periodic Work-Life Balance Notifier
+ConditionPathExists=%h/.wlbalance.status
+
+[Service]
+Type=oneshot
+ExecStart=%h/scripts/python/wlbalance.py --notifier
+
