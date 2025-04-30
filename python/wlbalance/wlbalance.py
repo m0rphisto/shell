@@ -33,7 +33,7 @@ fid='$Id: wlbalance.py v1.7 2025-04-30 04:10:46 +0200 .m0rph $'
 ################################################################################
 # License: GNU/GPLv3 -- https://gnu.org/gpl-3.0
 ################################################################################
-# No SheBand under Windows !!!
+# No SheBang under Windows !!!
 
 import argparse
 import time
