@@ -94,8 +94,9 @@ def notify(title, message, simulate=False):
                 f"[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('wlbalance').Show($toast)"
             ], shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         elif system == "Linux":
-            subprocess.Popen(["notify-send", title, message])
+            subprocess.run(["notify-send", title, message])
         elif system == "Darwin":
+            # I do not own a Mac, so this is NOT TESTED !!!
             subprocess.Popen(["osascript", "-e", f'display notification "{message}" with title "{title}"'])
         elif notification:
             notification.notify(title=title, message=message, timeout=10)
