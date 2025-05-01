@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ################################################################################
-fid='$Id: wlbalance.py v1.8 2025-05-01 17:42:20 +0200 .m0rph $'
+fid='$Id: wlbalance.py v1.9 2025-05-01 18:12:47 +0200 .m0rph $'
 ################################################################################
 # Description:
 # ------------
@@ -108,11 +108,13 @@ def notify(title, message, simulate=False):
 def run_notifier():
     print("[INFO] Notifier active: reminding every 3 hours while in 'work begin' mode.")
     try:
-        while get_status() == "work begin" or get_status() == 'pause end':
+        status = get_status()
+        while status == "work begin" or status == 'pause end':
             time.sleep(timer)
+            hours = timer / 3600
             notify(
-                title='Take a break!',
-                message='You have been working for 3 hours. Time to pause!'
+                title='Time to pause! Take a break!',
+                message=('You have been working for %s hours.' % hours)
             )
     except KeyboardInterrupt:
         print("[INFO] Notifier stopped by user.")
@@ -145,11 +147,12 @@ def detach_notifier():
 # Argument parsing
 parser = argparse.ArgumentParser(description='Work-Life Balance Tracker',
     epilog='''
-[en-US] Options:
+Options:
 -u, --up              := Log time you got up
 -d, --down            := Log time you went to bed
 -w, --work begin/end  := Start or end a work session
 -p, --pause begin/end := Start or end a break session
+-g, --get-status      := Get current work/pause status
 --notifier            := Run periodic notifier (will block shell unless detached)
 --detach-notifier     := Spawn notifier in separate detached background process
 --test-notify         := Dry-run only; shows which backend would be used without sending a notification
@@ -160,6 +163,7 @@ parser.add_argument('-u', '--up', action='store_true', help='Log time you got up
 parser.add_argument('-d', '--down', action='store_true', help='Log time you went to bed')
 parser.add_argument('-w', '--work', choices=['begin', 'end'], help='Start or end working')
 parser.add_argument('-p', '--pause', choices=['begin', 'end'], help='Start or end a pause')
+parser.add_argument('-g', '--get-status', action='store_true', help='Get current work/pause status.')
 parser.add_argument('--notifier', action='store_true', help='Run notifier in foreground')
 parser.add_argument('--detach-notifier', action='store_true', help='Run notifier in background as subprocess')
 parser.add_argument('--test-notify', action='store_true', help='Run a dry test without sending a notification')
@@ -179,13 +183,17 @@ elif args.work:
 elif args.pause:
     log_event(f"pause {args.pause}")
     set_status(f"pause {args.pause}")
+elif args.get_status:
+    print("[+] Your actual status is: %s" % get_status())
 elif args.notifier:
-    if get_status() == 'work begin' or get_status() == 'pause end':
+    status = get_status()
+    if status == 'work begin' or status == 'pause end':
         run_notifier()
     else:
         print("[INFO] Not in 'work begin' status. Notifier not started.")
 elif args.detach_notifier:
-    if get_status() == 'work begin' or get_status() == 'pause end':
+    status = get_status()
+    if status == 'work begin' or status == 'pause end':
         detach_notifier()
     else:
         print("[INFO] Not in 'work begin' status. Notifier not detached.")
