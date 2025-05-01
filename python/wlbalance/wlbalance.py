@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ################################################################################
-fid='$Id: wlbalance.py v1.7 2025-04-30 04:10:46 +0200 .m0rph $'
+fid='$Id: wlbalance.py v1.8 2025-05-01 17:42:20 +0200 .m0rph $'
 ################################################################################
 # Description:
 # ------------
@@ -33,7 +33,7 @@ fid='$Id: wlbalance.py v1.7 2025-04-30 04:10:46 +0200 .m0rph $'
 ################################################################################
 # License: GNU/GPLv3 -- https://gnu.org/gpl-3.0
 ################################################################################
-# No SheBang under Windows !!!
+# No SheBand under Windows !!!
 
 import argparse
 import time
@@ -94,9 +94,8 @@ def notify(title, message, simulate=False):
                 f"[Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('wlbalance').Show($toast)"
             ], shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         elif system == "Linux":
-            subprocess.run(["notify-send", title, message])
+            subprocess.Popen(["notify-send", title, message])
         elif system == "Darwin":
-            # I do not own a Mac, so this is NOT TESTED !!!
             subprocess.Popen(["osascript", "-e", f'display notification "{message}" with title "{title}"'])
         elif notification:
             notification.notify(title=title, message=message, timeout=10)
@@ -109,7 +108,7 @@ def notify(title, message, simulate=False):
 def run_notifier():
     print("[INFO] Notifier active: reminding every 3 hours while in 'work begin' mode.")
     try:
-        while get_status() == "work begin":
+        while get_status() == "work begin" or get_status() == 'pause end':
             time.sleep(timer)
             notify(
                 title='Take a break!',
@@ -181,12 +180,12 @@ elif args.pause:
     log_event(f"pause {args.pause}")
     set_status(f"pause {args.pause}")
 elif args.notifier:
-    if get_status() == 'work begin':
+    if get_status() == 'work begin' or get_status() == 'pause end':
         run_notifier()
     else:
         print("[INFO] Not in 'work begin' status. Notifier not started.")
 elif args.detach_notifier:
-    if get_status() == 'work begin':
+    if get_status() == 'work begin' or get_status() == 'pause end':
         detach_notifier()
     else:
         print("[INFO] Not in 'work begin' status. Notifier not detached.")
