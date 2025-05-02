@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 ################################################################################
-fid='$Id: wlbalance.py v1.9 2025-05-01 18:12:47 +0200 .m0rph $'
+fid='$Id: wlbalance.py v2.0 2025-05-02 04:00:36 +0200 .m0rph $'
 ################################################################################
 # Description:
 # ------------
@@ -72,6 +72,18 @@ def get_status():
         return None
     with open(STATUSFILE, 'r') as f:
         return f.read().strip()
+
+# Helper to list today's activities.
+def list_activities():
+    if not os.path.exists(LOGFILE):
+        return None
+    today = datetime.now().strftime('%Y-%m-%d')
+    yesterday = (datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')
+    print(f"[+] Your last two day's activities list:")
+    with open(LOGFILE, 'r') as f:
+        for line in f:
+           if line.startswith(today) or line.startswith(yesterday):
+              print(line, end='')
 
 # Platform-aware notification
 def notify(title, message, simulate=False):
@@ -152,6 +164,7 @@ Options:
 -d, --down            := Log time you went to bed
 -w, --work begin/end  := Start or end a work session
 -p, --pause begin/end := Start or end a break session
+-l, --list            := List today\'s activities.
 -g, --get-status      := Get current work/pause status
 --notifier            := Run periodic notifier (will block shell unless detached)
 --detach-notifier     := Spawn notifier in separate detached background process
@@ -163,6 +176,7 @@ parser.add_argument('-u', '--up', action='store_true', help='Log time you got up
 parser.add_argument('-d', '--down', action='store_true', help='Log time you went to bed')
 parser.add_argument('-w', '--work', choices=['begin', 'end'], help='Start or end working')
 parser.add_argument('-p', '--pause', choices=['begin', 'end'], help='Start or end a pause')
+parser.add_argument('-l', '--list', action='store_true', help='List today\'s activities.')
 parser.add_argument('-g', '--get-status', action='store_true', help='Get current work/pause status.')
 parser.add_argument('--notifier', action='store_true', help='Run notifier in foreground')
 parser.add_argument('--detach-notifier', action='store_true', help='Run notifier in background as subprocess')
@@ -185,6 +199,8 @@ elif args.pause:
     set_status(f"pause {args.pause}")
 elif args.get_status:
     print("[+] Your actual status is: %s" % get_status())
+elif args.list:
+    list_activities()
 elif args.notifier:
     status = get_status()
     if status == 'work begin' or status == 'pause end':
