@@ -68,6 +68,7 @@ wlbalance.py -w end             # end working
 wlbalance.py -p begin           # start pause
 wlbalance.py -p end             # end pause
 wlbalance.py -g                 # get current status
+wlbalance.py -l                 # get last two days activities
 
 # Start notifier (blocks shell)
 wlbalance.py --notifier
